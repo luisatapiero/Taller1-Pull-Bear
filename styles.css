@@ -164,3 +164,11 @@ video {
   right: 50px;
   top: 200px;
 }
+
+.carrusel-title {
+  margin: 75px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
