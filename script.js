@@ -71,3 +71,54 @@ carousel.addEventListener("touchmove", dragging);
 
 document.addEventListener("mouseup", dragStop);
 carousel.addEventListener("touchend", dragStop);
+
+
+/* Top Products*/
+
+let gallerycounter = 1;
+const gallery1 = document.getElementById("one");
+const gallery2 = document.getElementById("two");
+const gallery3 = document.getElementById("three");
+
+const buttonright = document.getElementById("right");
+const buttonleft = document.getElementById("left");
+
+buttonright.addEventListener("click", e => {
+    gallerycounter++
+    if (gallerycounter === 1 || gallerycounter === 0) {
+        gallery1.style.display = "grid"
+        gallery2.style.display = "none"
+        gallery3.style.display = "none"
+    } else if (gallerycounter === 2) {
+        gallery1.style.display = "none"
+        gallery2.style.display = "grid"
+        gallery3.style.display = "none"
+    } else {
+        gallery1.style.display = "none"
+        gallery2.style.display = "none"
+        gallery3.style.display = "grid"
+    }
+    if (gallerycounter > 3) {
+        gallerycounter = 1
+    }
+})
+
+buttonleft.addEventListener("click", e => {
+    gallerycounter--
+    if (gallerycounter === 1 || gallerycounter === 0) {
+        gallery1.style.display = "grid"
+        gallery2.style.display = "none"
+        gallery3.style.display = "none"
+    } else if (gallerycounter === 2) {
+        gallery1.style.display = "none"
+        gallery2.style.display = "grid"
+        gallery3.style.display = "none"
+    } else {
+        gallery1.style.display = "none"
+        gallery2.style.display = "none"
+        gallery3.style.display = "grid"
+    }
+    if (gallerycounter < 1) {
+        gallerycounter = 1
+    }
+})
