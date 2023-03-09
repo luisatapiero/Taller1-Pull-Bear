@@ -29,7 +29,7 @@ header {
 }
 
 li.nav-item {
-  
+
   list-style-type: none;
   font-family: "Oswald";
   font-weight: 400;
@@ -57,6 +57,7 @@ li.nav-item:hover {
 
 #home-container {
   background-image: url(images/sadiebg.png);
+  background-repeat: no-repeat;
   min-height: 100vh;
   background-position: center;
   position: relative;
@@ -170,7 +171,8 @@ video {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1200px;
+  /*max-width: 1200px;*/
+  width: auto;
   position: relative;
 
 }
@@ -301,8 +303,8 @@ video {
 
 
 
-i {
-	top: 80%;
+#products i {
+  top: 80%;
 	height: 44px;
 	width: 44px;
 	color:  #1b1915;
@@ -319,20 +321,20 @@ i {
 	
 }
 
-i:active {
+#products i:active {
 	transform: translateY(-50%) scale(0.9);
 }
 
-i:hover {
+#products i:hover {
 	background: #fffdfd;
 }
 
-i:first-child {
+#products i:first-child {
 	left: 32px;
 	line-height: 44px;
 }
 
-i:last-child {
+#products i:last-child {
 	right: 32px;
 	line-height: 44px;
 }

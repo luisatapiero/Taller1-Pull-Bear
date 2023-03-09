@@ -80,8 +80,8 @@ const gallery1 = document.getElementById("one");
 const gallery2 = document.getElementById("two");
 const gallery3 = document.getElementById("three");
 
-const buttonright = document.getElementById("right");
-const buttonleft = document.getElementById("left");
+const buttonright = document.getElementById("right-products");
+const buttonleft = document.getElementById("left-products");
 
 buttonright.addEventListener("click", e => {
     gallerycounter++
