@@ -503,6 +503,21 @@ margin: 20px;
 }
 
 
+#carrusel > a {
+  margin: auto;
+  display: block;
+  margin-top: 50px;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 15px 30px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  width: fit-content;
+  text-decoration: none;
+  color: black;
+  font-family: "Oswald";
+}
+
 @media screen and (max-width: 900px) {
   .carousel img {
     width: calc(100% / 2);
@@ -531,6 +546,7 @@ margin: 20px;
   grid-auto-rows: var(--row-height);
   gap: var(--gap);
   margin: -30px 6%;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 
@@ -701,7 +717,7 @@ margin: 20px;
 /* outfit of the week*/
 
 .outfit-cont {
-  padding: 0;
+  padding: 77px;
   padding-top: 0;
 }
 
@@ -754,7 +770,7 @@ margin: 20px;
 
 .outfit-cont_price {
 
-  font-size: 26px;
+  font-size: 45px;
   font-weight: 700;
   font-family: sans-serif;
   margin-bottom: 24px;
@@ -777,6 +793,7 @@ margin: 20px;
   width: 155.99px;
   height: 38.52px;
   text-align: center;
+  font-family: "Roboto Condensed";
 
 }
 
@@ -926,4 +943,151 @@ p {
 }
 .slick-next {
   right: 0px;
+}
+
+
+/*foother*/
+
+footer {
+  border-top: 1px solid rgba(25, 25, 25, 0.2);;
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  color: #6F6F6F;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.upper-footer {
+
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+
+}
+
+.upper-footer-company {
+
+  text-align: left;
+  margin-left: 150px;
+
+}
+
+.upper-footer-buttons {
+
+  margin-left: 180px;
+
+}
+
+.upper-footer-buttons-title-util{
+
+ margin: 25px 0; 
+}
+
+.upper-footer-help-item {
+  margin: 19px;
+}
+
+.upper-footer-company-item {
+
+  margin: 19px;
+
+}
+
+
+.lower-footer-item {
+
+  margin: 3px;
+
+}
+
+.lower-footer {
+
+  margin: -34px 19px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.lower-footer-p {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.lower-footer-input {
+  width: 25em;
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 5px 10px;
+  margin-bottom: 16px;
+}
+
+.lower-footer-button {
+  width: 25em;
+  height: 3em;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+}
+
+.lower-footer-button:hover{
+
+  cursor: pointer;
+
+}
+
+.upper-footer-buttons-findus-div-button{
+
+  background-color: #fff;
+  border: none;
+}
+
+.upper-footer-buttons-findus-div-button:hover{
+  cursor: pointer;
+}
+
+.upper-footer-buttons-findus-div-button-img{
+
+width: 115px;
+
+}
+
+.upper-footer-buttons-findus-div-button-img-gp{
+
+  width: 133px;
+  
+  }
+
+.upper-footer-buttons-payment-div-button{
+
+  background-color: #fff;
+  border: none;
+  margin: 0 3px;
+}
+
+.upper-footer-buttons-payment-div-button:hover{
+  cursor: pointer;
+}
+
+.upper-footer-buttons-payment-div-button-img{
+
+width: 64px;
+
+}
+
+.upper-footer-buttons-follow-div-button{
+
+  background-color: #fff;
+  border: none;
+  margin: 0 3px;
+}
+
+.upper-footer-buttons-follow-div-button:hover{
+  cursor: pointer;
+}
+
+.upper-footer-buttons-follow-div-button-img{
+
+width: 42px;
+
 }
