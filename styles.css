@@ -213,6 +213,8 @@ video {
   width: auto;
   position: relative;
 }
+
+
 .wrapper i {
   top: 50%;
   height: 44px;
@@ -232,17 +234,22 @@ video {
 .wrapper i:active {
   transform: translateY(-50%) scale(0.9);
 }
+
 .wrapper i:hover {
   background: #fffdfd;
 }
-.wrapper i:first-child {
-  left: 50px;
 
+.wrapper i:first-of-type {
+  left: 50px;
   display: none;
+  z-index: 2;
+
 }
+
 .wrapper i:last-child {
   right: 50px;
 }
+
 .wrapper .carousel {
   font-size: 0px;
   cursor: pointer;
@@ -250,6 +257,14 @@ video {
   white-space: nowrap;
   scroll-behavior: smooth;
 }
+
+.carousel a {
+  position: relative;
+  display: inline-block;
+  width: calc(72% / 3);
+  margin-left: 14px;
+}
+
 .carousel.dragging {
   cursor: grab;
   scroll-behavior: auto;
@@ -261,12 +276,9 @@ video {
   height: 416px;
   object-fit: cover;
   user-select: none;
-  margin-left: 14px;
-  width: calc(72% / 3);
+  width: 100%;
 }
-.carousel img:first-child {
-  margin-left: 14px;
-}
+
 @media screen and (max-width: 900px) {
   .carousel img {
     width: calc(100% / 2);
