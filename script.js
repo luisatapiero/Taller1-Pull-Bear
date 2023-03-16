@@ -54,11 +54,23 @@ const showHideIcons = () => {
 
 arrowIcons.forEach(icon => {
     icon.addEventListener("click", () => {
+        const mobileBreakpoint = 550;
+
+        if(window.innerWidth < mobileBreakpoint) {
+            // Card margin is the horizontal margin of the carousel's cards
+            const cardMargin = 14;
+            let firstImgWidth = firstImg.clientWidth + cardMargin;
+
+            carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
+            setTimeout(() => showHideIcons(), 100); // llamar a showHideIcons después de 60ms
+        } else {
+ 
         let firstImgWidth = firstImg.clientWidth + 1400; // obteniendo el ancho del primer img y añadiendo el valor del margen 
         // si el icono pulsado está a la izquierda, reduzca el valor de anchura del desplazamiento del carrusel a la izquierda, si no, añádalo a él
 
         carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
         setTimeout(() => showHideIcons(), 60); // llamar a showHideIcons después de 60ms
+        }
     });
 });
 
