@@ -126,6 +126,8 @@ li.nav-item:hover {
       transform: translateX(-100%);
   }
 
+
+
 }
 
 #home-container {
@@ -326,6 +328,7 @@ h3 {
   flex: 1 0 100%;
   scroll-snap-align: start;
   object-fit: contain;
+  object-position: 50% 50%;
 }
 
 #slide1 img {
@@ -1313,6 +1316,49 @@ footer {
   #trend-row {
     margin-left: -20px;
   }
+
+  .hero h1{
+    font-size: 95px;
+  }
+
+  .hero h2{
+    font-size: 43px;
+  }
+
+  h3{
+    font-size: 40px;
+  }
+
+  #collection-title {
+    margin: 30px 40px;
+  }
+
+  #collection-title> h2{
+    font-size: 32px;
+    text-align: left;
+  }
+
+  
+  
+  #bottom-text-hero {
+    padding: 0 0px;
+
+  }
+
+  #bottom-text-hero>p{
+    font-size: 28px;
+  }
+
+  #trends-media {
+    display: flex;
+    flex-direction: column;
+  
+  }
+.slider{
+  width: 400px;
+  height: 300px;
+}
+  
 }
 
 @media screen and (max-width:500px){
