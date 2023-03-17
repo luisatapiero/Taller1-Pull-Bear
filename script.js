@@ -1,5 +1,7 @@
 /*Carrusel ultimos vistos*/ 
 
+let clicked = false;
+
 function App() {}
 
 window.onload = function (event) {
@@ -176,5 +178,31 @@ buttonleft.addEventListener("click", e => {
         gallerycounter = 1
     }
 })
+
+const navBtn = document.querySelector('.nav-burger');
+const nav = document.getElementById('main-nav');
+
+navBtn.addEventListener('click', () => {
+        navBtn.classList.toggle('hidden');
+        nav.classList.remove('hidden')
+
+    	
+});
+nav.addEventListener('click', () => {
+    navBtn.classList.remove('hidden');
+    nav.classList.toggle('hidden')
+    
+});
+
+/* 
+  const nav = document.querySelector('#nav'); //Tendrias que mirar cual es el id que usas en el nav
+
+navBtn.addEventListener('click', () => {
+  nav.classList.toggle('hidden');
+});
+
+nav.addEventListener('click', () => {
+  nav.classList.remove('hidden');
+});*/
 
 
