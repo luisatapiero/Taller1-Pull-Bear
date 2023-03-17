@@ -80,7 +80,7 @@ li.nav-item:hover {
   }
 
   li.nav-item {
-    margin: 0 12px;
+      margin: 6px 12px;
   }
 
   #main-nav {
@@ -1207,6 +1207,8 @@ footer {
 }
 
 @media screen and (max-width: 1024px) {
+
+
   .upper-footer {
     display: flex;
     flex-direction: column;
@@ -1314,11 +1316,11 @@ footer {
   }
 
   #trend-row {
-    margin-left: -20px;
+    margin-left: -14px;
   }
 
   .hero h1{
-    font-size: 95px;
+    font-size: 80px;
   }
 
   .hero h2{
@@ -1406,7 +1408,7 @@ width: 100%;
 }
 
 .trend2 img {
-  margin: 0 14px;
+  margin: 0 9px;
   width: 94px;
   height: 143px;
 
@@ -1434,7 +1436,7 @@ width: 100%;
 }
 
 video {
-  width: 350px;
+  width: 339px;
   height: 200px;
 
 }
@@ -1442,6 +1444,36 @@ video {
 
 #trends {
   margin: 60px 12px;
+}
+
+#home-container {
+  height: 80vh;
+}
+
+.hero {
+
+  height: 66vh;
+}
+
+.carrusel-title {
+  margin: 38px;
+}
+
+.products-title {
+  margin: 38px;
+}
+
+.wrapper {
+  padding: 0 44px;
+}
+
+#logo img {
+  height: 20px;
+  width: 192px;
+}
+
+.outfit-title {
+  margin: 13px;
 }
 
 }
