@@ -31,7 +31,7 @@ header {
   height: 100%;
 }
 
-li.nav-item {
+.nav-item {
   list-style-type: none;
   font-family: "Oswald";
   font-weight: 400;
@@ -42,7 +42,7 @@ li.nav-item {
   color: rgba(255, 255, 255, 0.5);
 }
 
-li.nav-item:hover {
+.nav-item:hover {
   color: white;
   cursor: pointer;
 }
@@ -236,6 +236,13 @@ h3 {
   line-height: 80px;
 
   color: #0a0a0a;
+}
+
+a{
+
+text-decoration: none;
+color: rgba(255, 255, 255, 0.5);
+
 }
 
 #collection-title {
@@ -652,7 +659,7 @@ video {
 @media screen and (max-width: 1024px) {
   .galeria {
     --num-cols: 2;
-    --row-height: 450px;
+    --row-height: 190px;
   }
 }
 
@@ -736,9 +743,9 @@ video {
 
 .overlay>h2 {
   position: absolute;
-  top: 77%;
+  top: 47%;
   display: block;
-  font-size: 1.6em;
+  font-size: 0.46em;
   transform: translateY(-40px);
   transition: transform 0.25s;
   font-size: 1.5rem;
