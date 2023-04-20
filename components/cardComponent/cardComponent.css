@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+
+* {
+   box-sizing: border-box;
+   
+}
+
+.card {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+}
+
+.image {
+   aspect-ratio: 3 / 4;
+   display: block;
+   object-fit: cover;
+   width: 100%;
+}
+ 
+.content {
+   background-color: white;
+   border-radius: 15px;
+   box-shadow: 0 5px 10px rgba(0 0 0 / 0.1);
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
+   padding: 18px 31px;   
+   transform: translateY(-15px);
+   
+}
+
+.content * {
+   margin: 0;
+}
+
+.tag {
+   border-block-end: 1px solid rgba(0, 0, 0, 0.1);
+   margin-bottom: 18px;
+   
+}
+
+.price {
+   
+   margin-top: auto;
+   line-height: 15px;
+   padding: 0;
+   margin: 45px 0;
+   font-weight: 600;
+   font-size: 25px;
+   display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    
+}
+ 
+.buy-btn {
+   display: block;
+   margin-top: auto;
+   margin-left: auto;
+   border: 3px solid rgb(14, 14, 14);
+   border-radius: 10px;
+   padding: 15px 30px;
+   font-size: 1rem;
+   text-transform: uppercase;
+   width: fit-content;
+   text-decoration: none;
+   color: rgb(8, 8, 8);
+   font-family: "Oswald";
+   transition: 0.2s;
+}
+ 
+.title {
+   margin-bottom: 6px;
+   
+}
+
+.description {
+   font-family: 'Roboto Condensed', sans-serif;
+   font-weight: 200;
+}
