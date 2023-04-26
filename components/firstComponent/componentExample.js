@@ -175,9 +175,11 @@ class firstComponent extends HTMLElement {
     }
 
     render() {
+        
         let card = this.shadowRoot.getElementById("cards");
         card.innerHTML = '';
         this.filterItemsArray(this.filters).forEach((item) => {
+            
             card.innerHTML += `            
                 <app-card 
                     name="${item.name}" 
@@ -185,7 +187,8 @@ class firstComponent extends HTMLElement {
                     url="${item.url}" 
                     description="${item.description}" 
                     price="${item.price}">
-                </app-card>      
+                </app-card>    
+                
             `
         })
 
@@ -234,6 +237,7 @@ class firstComponent extends HTMLElement {
 
     }
 
+    
 
 }
 customElements.define("app-header", firstComponent);
