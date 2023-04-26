@@ -1,6 +1,6 @@
-class CardComponent extends HTMLElement {
+class ProductComponent extends HTMLElement {
     static get observedAttributes() {
-        return ['url', 'type', 'name', 'description', 'price'];
+        return ['url', 'type', 'name', 'description', 'price', 'color'];
     }
     constructor() {
         super();
@@ -9,6 +9,7 @@ class CardComponent extends HTMLElement {
         this.name = this.getAttribute('name');
         this.description = this.getAttribute('description');
         this.price = this.getAttribute('price');
+        this.color = this.getAttribute('color');
 
         this.attachShadow({
             mode: 'open'
@@ -23,12 +24,8 @@ class CardComponent extends HTMLElement {
     }
 
     render() {
-
-        let namenospaces = this.name.replaceAll(" ", "-")
-
-        let url = "./Thirdpage.html?id=" + namenospaces
         this.shadowRoot.innerHTML = `
-        <link rel="stylesheet" href="./components/cardComponent/cardComponent.css">
+        <link rel="stylesheet" href="./components/productComponent/productComponent.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <div class="card">
             <div class="img-container"> 
@@ -41,7 +38,8 @@ class CardComponent extends HTMLElement {
                 <h3 class="title">${this.name}</h3>
                 <p class="description">${this.description}</p>
                 <p class="price">Price $${this.price}</p>
-                <a href=${url}><button class="buy-btn">BUY NOW</button></a> 
+                <p class="color">${this.color}</p>
+                <button class="buy-btn">BUY NOW</button> 
             </div>
         </div>
         `;
@@ -55,5 +53,6 @@ class CardComponent extends HTMLElement {
         return this.getAttribute('url');
     }
 }
-customElements.define("app-card", CardComponent);
-export default CardComponent;
+
+customElements.define("app-productinfo", ProductComponent);
+export default ProductComponent;
