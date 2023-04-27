@@ -45,15 +45,43 @@ class ProductComponent extends HTMLElement {
 
         <div class="container-back-button">Producto</div>
 
-    
 
         <main>
-        <div class="container-img">
-            <img
-            src="${this.url}"
-            alt=""
-            />
+
+        <div class = "card-wrapper">
+  <div class = "card-principal">
+    <!-- card left -->
+    <div class = "product-imgs">
+      <div class = "img-display">
+
+        <div class = "img-showcase">
+          <img src = "${this.url}" alt = "">
         </div>
+        
+      </div>
+      <div class = "img-select">
+        <div class = "img-item">
+          <a href = "#" data-id = "1">
+            <img src = "${this.url}" alt = "">
+          </a>
+        </div>
+        <div class = "img-item">
+          <a href = "#" data-id = "2">
+            <img src = "${this.url}" alt = "">
+          </a>
+        </div>
+        <div class = "img-item">
+          <a href = "#" data-id = "3">
+            <img src = "${this.url}" alt = "">
+          </a>
+        </div>
+        <div class = "img-item">
+          <a href = "#" data-id = "4">
+            <img src = "${this.url}" alt = "">
+          </a>
+        </div>
+      </div>
+    </div>
 
         <div class="container-info-product">
             <div class="container-price">
@@ -148,8 +176,67 @@ class ProductComponent extends HTMLElement {
                 </div>
             </div>
         </div>
+
+
+        
         </main>
 
+        <section class="container-related-products">
+        <h2>You might also like</h2>
+        <div class="card-list-products">
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80" alt="">
+                </div>
+                <div class="info-card">
+                    <div class="text-product">
+                        <h3>Nike - Roshe Run</h3>
+                        <p class="category">Footwear, Sneakers</p>
+                    </div>
+                    <div class="price">$85.00</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80" alt="">
+                </div>
+                <div class="info-card">
+                    <div class="text-product">
+                        <h3>Nike - Roshe Run</h3>
+                        <p class="category">Footwear, Sneakers</p>
+                    </div>
+                    <div class="price">$85.00</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1131&q=80" alt="">
+                </div>
+                <div class="info-card">
+                    <div class="text-product">
+                        <h3>Nike - Roshe Run</h3>
+                        <p class="category">Footwear, Sneakers</p>
+                    </div>
+                    <div class="price">$85.00</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1131&q=80" alt="">
+                </div>
+                <div class="info-card">
+                    <div class="text-product">
+                        <h3>Nike - Roshe Run</h3>
+                        <p class="category">Footwear, Sneakers</p>
+                    </div>
+                    <div class="price">$85.00</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
         `;
