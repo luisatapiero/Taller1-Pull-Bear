@@ -23,6 +23,10 @@ class CardComponent extends HTMLElement {
     }
 
     render() {
+        let namenospaces = this.name.replaceAll(" ", "-")
+
+        let url = "./Thirdpage.html?id=" + namenospaces;
+
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="./components/cardComponent/cardComponent.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -37,7 +41,7 @@ class CardComponent extends HTMLElement {
                     <h3 class="title">${this.name}</h3>
                     <p class="price">$${this.price}</p>
                 </div>
-                <button class="buy-btn">BUY NOW</button> 
+                <a href=${url}><button class="buy-btn">VIEW DETAILS</button></a> 
             </div>
 
             <button class="like-btn">

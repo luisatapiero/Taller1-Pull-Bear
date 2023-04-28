@@ -1,10 +1,14 @@
 class ProductComponent extends HTMLElement {
     static get observedAttributes() {
-        return ['url', 'type', 'name', 'description', 'price', 'color'];
+        return ['url_1', 'url_2', 'url_3', 'url_4', 'url_5', 'type', 'name', 'description', 'price', 'color'];
     }
     constructor() {
         super();
-        this.url = this.getAttribute('url');
+        this.url_1 = this.getAttribute('url_1');
+        this.url_2 = this.getAttribute('url_2');
+        this.url_3 = this.getAttribute('url_3');
+        this.url_4 = this.getAttribute('url_4');
+        this.url_5 = this.getAttribute('url_5');
         this.type = this.getAttribute('type');
         this.name = this.getAttribute('name');
         this.description = this.getAttribute('description');
@@ -21,9 +25,11 @@ class ProductComponent extends HTMLElement {
     attributeChangeCallback(propName, oldValue, newValue) {
         this[propName] = newValue;
         this.render();
+
     }
 
     render() {
+        console.log('esta es la' + this.url_1);
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="./components/productComponent/productComponent.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -47,6 +53,7 @@ class ProductComponent extends HTMLElement {
 
 
         <main>
+            
 
         <div class = "card-wrapper">
   <div class = "card-principal">
@@ -55,29 +62,31 @@ class ProductComponent extends HTMLElement {
       <div class = "img-display">
 
         <div class = "img-showcase">
-          <img src = "${this.url}" alt = "">
+          <img src = "${this.url_1}" alt = "">
         </div>
+        
+
         
       </div>
       <div class = "img-select">
         <div class = "img-item">
           <a href = "#" data-id = "1">
-            <img src = "${this.url}" alt = "">
+            <img src = "${this.url_2}" alt = "">
           </a>
         </div>
         <div class = "img-item">
           <a href = "#" data-id = "2">
-            <img src = "${this.url}" alt = "">
+            <img src = "${this.url_3}" alt = "">
           </a>
         </div>
         <div class = "img-item">
           <a href = "#" data-id = "3">
-            <img src = "${this.url}" alt = "">
+            <img src = "${this.url_4}" alt = "">
           </a>
         </div>
         <div class = "img-item">
           <a href = "#" data-id = "4">
-            <img src = "${this.url}" alt = "">
+            <img src = "${this.url_5}" alt = "">
           </a>
         </div>
       </div>
@@ -94,7 +103,7 @@ class ProductComponent extends HTMLElement {
                 <label for="colour">Color</label>
                 <select name="colour" id="colour">
                 <option disabled selected value="">Choose an option</option>
-                <option value="Color1">${this.color}</option>
+                <option value="Color1">${this.color.color}</option>
                 <option value="Yellow">Yellow</option>
                 <option value="Blue">Blue</option>
                 </select>
@@ -240,7 +249,70 @@ class ProductComponent extends HTMLElement {
 
 
         `;
+
+        const inputQuantity = this.shadowRoot.querySelector('.input-quantity');
+        const btnIncrement = this.shadowRoot.querySelector('#increment');
+        const btnDecrement = this.shadowRoot.querySelector('#decrement');
+
+        let valueByDefault = parseInt(inputQuantity.value);
+
+        btnIncrement.addEventListener('click', () => {
+            valueByDefault += 1;
+            inputQuantity.value = valueByDefault;
+        });
+
+        btnDecrement.addEventListener('click', () => {
+            if (valueByDefault === 1) {
+                return
+            }
+            valueByDefault -= 1;
+            inputQuantity.value = valueByDefault;
+        });
+
+        const toggleDescription = this.shadowRoot.querySelector('.title-description');
+        const toggleAdditionalInformation = this.shadowRoot.querySelector('.title-additional-information');
+        const toggleReviews = this.shadowRoot.querySelector('.title-reviews');
+
+        const contentDescription = this.shadowRoot.querySelector('.text-description');
+        const contentAdditionalInformation = this.shadowRoot.querySelector('.text-additional-information');
+        const contentReviews = this.shadowRoot.querySelector('.text-reviews');
+
+        toggleDescription.addEventListener('click', () => {
+            contentDescription.classList.toggle('hidden');
+        });
+
+        toggleAdditionalInformation.addEventListener('click', () => {
+            contentAdditionalInformation.classList.toggle('hidden');
+        });
+
+        toggleReviews.addEventListener('click', () => {
+            contentReviews.classList.toggle('hidden');
+        });
+
+
+
+        const imgs = this.shadowRoot.querySelectorAll('.img-select a');
+        const imgBtns = [...imgs];
+        let imgId = 1;
+
+        imgBtns.forEach((imgItem) => {
+            imgItem.addEventListener('click', (event) => {
+                event.preventDefault();
+                imgId = imgItem.dataset.id;
+                slideImage();
+            });
+        });
+
+        function slideImage() {
+            const displayWidth = this.shadowRoot.querySelector('.img-showcase img:first-child').clientWidth;
+
+            this.shadowRoot.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+        }
+
+        window.addEventListener('resize', slideImage);
     }
+
+
 
     set url(val) {
         this.setAttribute('url', val);

@@ -54,14 +54,22 @@ class InfoComponent extends HTMLElement {
       <app-productinfo 
         name="${this.productDetail.name}" 
         type="${this.productDetail.type}" 
-        url="${this.productDetail.url}" 
+        url_1="${this.productDetail.url_1}" 
+        url_2="${this.productDetail.url_2}" 
+        url_3="${this.productDetail.url_3}" 
+        url_4="${this.productDetail.url_4}" 
+        url_5="${this.productDetail.url_5}" 
         description="${this.productDetail.description}" 
         price="${this.productDetail.price}"
         color="${this.productDetail.color}">
       </app-productinfo>
     `;
     this.shadowRoot.appendChild(product);
+
+
   }
+
+
 
   printData() {
     getData().then((a) => {
