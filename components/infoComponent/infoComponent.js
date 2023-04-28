@@ -32,9 +32,6 @@ class InfoComponent extends HTMLElement {
     this.shadowRoot.innerHTML = `
       <link rel="stylesheet" href="./components/infoComponent/infoComponent.css">
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-      <div class="title">
-        <h3 class="title-text">Detalle de producto</h3>
-      </div>
     `;
   }
 
@@ -60,8 +57,9 @@ class InfoComponent extends HTMLElement {
         url_4="${this.productDetail.url_4}" 
         url_5="${this.productDetail.url_5}" 
         description="${this.productDetail.description}" 
+        category="${this.productDetail.category}" 
         price="${this.productDetail.price}"
-        color="${this.productDetail.color}">
+        color="${this.productDetail.color.color}">
       </app-productinfo>
     `;
     this.shadowRoot.appendChild(product);

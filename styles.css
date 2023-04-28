@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
 * {
   padding: 0;
@@ -48,6 +49,22 @@ header {
   cursor: pointer;
 }
 
+.nav-item-3 {
+  list-style-type: none;
+  font-family: "Oswald";
+  font-weight: 400;
+  border-bottom: 1px solid rgba(46, 60, 84, 0);
+  font-size: 20px;
+  transition: 0.2s;
+  margin: 0px 20px;
+  color: rgba(7, 7, 7, 0.5);
+}
+
+.nav-item-3:hover {
+  color: #0a0a0a;
+  cursor: pointer;
+}
+
 .nav-burger {
   display: none;
   background: none;
@@ -84,6 +101,10 @@ header {
   li.nav-item {
       margin: 6px 12px;
   }
+
+  li.nav-item-3 {
+    margin: 6px 12px;
+}
 
   #main-nav {
     position: fixed;
