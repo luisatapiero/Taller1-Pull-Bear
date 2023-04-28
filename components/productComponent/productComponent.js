@@ -24,6 +24,156 @@ class ProductComponent extends HTMLElement {
   }
   connectedCallback() {
     this.render();
+
+
+    const carousel = this.shadowRoot.querySelector(".carousel"),
+      firstImg = carousel.querySelectorAll("img")[0],
+      arrowIcons = this.shadowRoot.querySelectorAll(".wrapper i");
+
+    let isDragStart = false, isDragging = false, prevPageX, prevScrollLeft, positionDiff;
+
+    const showHideIcons = () => {
+      // mostrar y ocultar el icono anterior/siguiente según el valor de desplazamiento izquierdo del carrusel
+      let scrollWidth = carousel.scrollWidth - carousel.clientWidth; // obtener el ancho máximo de desplazamiento
+      arrowIcons[0].style.display = carousel.scrollLeft == 0 ? "none" : "block";
+      arrowIcons[1].style.display = carousel.scrollLeft == scrollWidth ? "none" : "block";
+    }
+
+    arrowIcons.forEach(icon => {
+      icon.addEventListener("click", () => {
+        const mobileBreakpoint = 550;
+
+        if (window.innerWidth < mobileBreakpoint) {
+          // Card margin is the horizontal margin of the carousel's cards
+          const cardMargin = 14;
+          let firstImgWidth = firstImg.clientWidth + cardMargin;
+
+          carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
+          setTimeout(() => showHideIcons(), 100); // llamar a showHideIcons después de 60ms
+        } else {
+
+          let firstImgWidth = firstImg.clientWidth + 1400; // obteniendo el ancho del primer img y añadiendo el valor del margen 
+          // si el icono pulsado está a la izquierda, reduzca el valor de anchura del desplazamiento del carrusel a la izquierda, si no, añádalo a él
+
+          carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
+          setTimeout(() => showHideIcons(), 60); // llamar a showHideIcons después de 60ms
+        }
+      });
+    });
+
+    const autoSlide = () => {
+      // si no queda ninguna imagen por desplazar, vuelva desde aquí
+      if (carousel.scrollLeft - (carousel.scrollWidth - carousel.clientWidth) > -1 || carousel.scrollLeft <= 0) return;
+
+      positionDiff = Math.abs(positionDiff); // hacer que el valor de positionDiff sea positivo
+      let firstImgWidth = firstImg.clientWidth + 14;
+      // obtener el valor de diferencia que hay que añadir o reducir del carrusel de la izquierda para tomar el centro img medio
+      let valDifference = firstImgWidth - positionDiff;
+
+      if (carousel.scrollLeft > prevScrollLeft) { // si el usuario se desplaza hacia la derecha
+        return carousel.scrollLeft += positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
+      }
+      // isi el usuario se desplaza hacia la izquierda
+      carousel.scrollLeft -= positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
+    }
+
+    const dragStart = (e) => {
+      // actualización del valor de las variables globales al pulsar el ratón
+      isDragStart = true;
+      prevPageX = e.pageX || e.touches[0].pageX;
+      prevScrollLeft = carousel.scrollLeft;
+    }
+
+    const dragging = (e) => {
+      // desplazamiento de imágenes/carrusel a la izquierda según el puntero del ratón
+      if (!isDragStart) return;
+      e.preventDefault();
+      isDragging = true;
+      carousel.classList.add("dragging");
+      positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
+      carousel.scrollLeft = prevScrollLeft - positionDiff;
+      showHideIcons();
+    }
+
+    const dragStop = () => {
+      isDragStart = false;
+      carousel.classList.remove("dragging");
+
+      if (!isDragging) return;
+      isDragging = false;
+      autoSlide();
+    }
+
+    carousel.addEventListener("mousedown", dragStart);
+    carousel.addEventListener("touchstart", dragStart);
+
+    this.shadowRoot.addEventListener("mousemove", dragging);
+    carousel.addEventListener("touchmove", dragging);
+
+    this.shadowRoot.addEventListener("mouseup", dragStop);
+    carousel.addEventListener("touchend", dragStop);
+
+    const inputQuantity = this.shadowRoot.querySelector('.input-quantity');
+    const btnIncrement = this.shadowRoot.querySelector('#increment');
+    const btnDecrement = this.shadowRoot.querySelector('#decrement');
+
+    let valueByDefault = parseInt(inputQuantity.value);
+
+    btnIncrement.addEventListener('click', () => {
+      valueByDefault += 1;
+      inputQuantity.value = valueByDefault;
+    });
+
+    btnDecrement.addEventListener('click', () => {
+      if (valueByDefault === 1) {
+        return
+      }
+      valueByDefault -= 1;
+      inputQuantity.value = valueByDefault;
+    });
+
+    const toggleDescription = this.shadowRoot.querySelector('.title-description');
+    const toggleAdditionalInformation = this.shadowRoot.querySelector('.title-additional-information');
+    const toggleReviews = this.shadowRoot.querySelector('.title-reviews');
+
+    const contentDescription = this.shadowRoot.querySelector('.text-description');
+    const contentAdditionalInformation = this.shadowRoot.querySelector('.text-additional-information');
+    const contentReviews = this.shadowRoot.querySelector('.text-reviews');
+
+    toggleDescription.addEventListener('click', () => {
+      contentDescription.classList.toggle('hidden');
+    });
+
+    toggleAdditionalInformation.addEventListener('click', () => {
+      contentAdditionalInformation.classList.toggle('hidden');
+    });
+
+    toggleReviews.addEventListener('click', () => {
+      contentReviews.classList.toggle('hidden');
+    });
+
+
+
+    const imgs = this.shadowRoot.querySelectorAll('.img-select a');
+  const imgBtns = [...imgs];
+  let imgId = 1;
+
+  imgBtns.forEach((imgItem) => {
+    imgItem.addEventListener('click', (event) => {
+      event.preventDefault();
+      imgId = imgItem.dataset.id;
+      slideImage.call(this); // Pasar el `this` del componente a la función
+    });
+  });
+
+  const slideImage = () => { // Usar una función flecha para tener acceso al `this` del componente
+    const displayWidth = this.shadowRoot.querySelector('.img-showcase img:first-child').clientWidth;
+    this.shadowRoot.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+  }
+
+  window.addEventListener('resize', slideImage);
+
+
   }
   attributeChangeCallback(propName, oldValue, newValue) {
     this[propName] = newValue;
@@ -311,142 +461,10 @@ class ProductComponent extends HTMLElement {
 
         `;
 
-        
-
-    const carousel = this.shadowRoot.querySelector(".carousel"),
-      firstImg = carousel.querySelectorAll("img")[0],
-      arrowIcons = this.shadowRoot.querySelectorAll(".wrapper i");
-
-    let isDragStart = false, isDragging = false, prevPageX, prevScrollLeft, positionDiff;
-
-    const showHideIcons = () => {
-      // mostrar y ocultar el icono anterior/siguiente según el valor de desplazamiento izquierdo del carrusel
-      let scrollWidth = carousel.scrollWidth - carousel.clientWidth; // obtener el ancho máximo de desplazamiento
-      arrowIcons[0].style.display = carousel.scrollLeft == 0 ? "none" : "block";
-      arrowIcons[1].style.display = carousel.scrollLeft == scrollWidth ? "none" : "block";
-    }
-
-    arrowIcons.forEach(icon => {
-      icon.addEventListener("click", () => {
-        const mobileBreakpoint = 550;
-
-        if (window.innerWidth < mobileBreakpoint) {
-          // Card margin is the horizontal margin of the carousel's cards
-          const cardMargin = 14;
-          let firstImgWidth = firstImg.clientWidth + cardMargin;
-
-          carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
-          setTimeout(() => showHideIcons(), 100); // llamar a showHideIcons después de 60ms
-        } else {
-
-          let firstImgWidth = firstImg.clientWidth + 1400; // obteniendo el ancho del primer img y añadiendo el valor del margen 
-          // si el icono pulsado está a la izquierda, reduzca el valor de anchura del desplazamiento del carrusel a la izquierda, si no, añádalo a él
-
-          carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
-          setTimeout(() => showHideIcons(), 60); // llamar a showHideIcons después de 60ms
-        }
-      });
-    });
-
-    const autoSlide = () => {
-      // si no queda ninguna imagen por desplazar, vuelva desde aquí
-      if (carousel.scrollLeft - (carousel.scrollWidth - carousel.clientWidth) > -1 || carousel.scrollLeft <= 0) return;
-
-      positionDiff = Math.abs(positionDiff); // hacer que el valor de positionDiff sea positivo
-      let firstImgWidth = firstImg.clientWidth + 14;
-      // obtener el valor de diferencia que hay que añadir o reducir del carrusel de la izquierda para tomar el centro img medio
-      let valDifference = firstImgWidth - positionDiff;
-
-      if (carousel.scrollLeft > prevScrollLeft) { // si el usuario se desplaza hacia la derecha
-        return carousel.scrollLeft += positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
-      }
-      // isi el usuario se desplaza hacia la izquierda
-      carousel.scrollLeft -= positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
-    }
-
-    const dragStart = (e) => {
-      // actualización del valor de las variables globales al pulsar el ratón
-      isDragStart = true;
-      prevPageX = e.pageX || e.touches[0].pageX;
-      prevScrollLeft = carousel.scrollLeft;
-    }
-
-    const dragging = (e) => {
-      // desplazamiento de imágenes/carrusel a la izquierda según el puntero del ratón
-      if (!isDragStart) return;
-      e.preventDefault();
-      isDragging = true;
-      carousel.classList.add("dragging");
-      positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
-      carousel.scrollLeft = prevScrollLeft - positionDiff;
-      showHideIcons();
-    }
-
-    const dragStop = () => {
-      isDragStart = false;
-      carousel.classList.remove("dragging");
-
-      if (!isDragging) return;
-      isDragging = false;
-      autoSlide();
-    }
-
-    carousel.addEventListener("mousedown", dragStart);
-    carousel.addEventListener("touchstart", dragStart);
-
-    this.shadowRoot.addEventListener("mousemove", dragging);
-    carousel.addEventListener("touchmove", dragging);
-
-    this.shadowRoot.addEventListener("mouseup", dragStop);
-    carousel.addEventListener("touchend", dragStop);
-
-    const inputQuantity = this.shadowRoot.querySelector('.input-quantity');
-    const btnIncrement = this.shadowRoot.querySelector('#increment');
-    const btnDecrement = this.shadowRoot.querySelector('#decrement');
-
-    let valueByDefault = parseInt(inputQuantity.value);
-
-    btnIncrement.addEventListener('click', () => {
-      valueByDefault += 1;
-      inputQuantity.value = valueByDefault;
-    });
-
-    btnDecrement.addEventListener('click', () => {
-      if (valueByDefault === 1) {
-        return
-      }
-      valueByDefault -= 1;
-      inputQuantity.value = valueByDefault;
-    });
-    
-
-    const toggleDescription = this.shadowRoot.querySelector('.title-description');
-    const toggleAdditionalInformation = this.shadowRoot.querySelector('.title-additional-information');
-    const toggleReviews = this.shadowRoot.querySelector('.title-reviews');
-
-    const contentDescription = this.shadowRoot.querySelector('.text-description');
-    const contentAdditionalInformation = this.shadowRoot.querySelector('.text-additional-information');
-    const contentReviews = this.shadowRoot.querySelector('.text-reviews');
-
-    toggleDescription.addEventListener('click', () => {
-      contentDescription.classList.toggle('hidden');
-    });
-
-    toggleAdditionalInformation.addEventListener('click', () => {
-      contentAdditionalInformation.classList.toggle('hidden');
-    });
-
-    toggleReviews.addEventListener('click', () => {
-      contentReviews.classList.toggle('hidden');
-    });
-
-
-    
-
     
 
 
-
+}
 
 
   set url(val) {
@@ -456,6 +474,8 @@ class ProductComponent extends HTMLElement {
   get url() {
     return this.getAttribute('url');
   }
+
+
 }
 
 customElements.define("app-productinfo", ProductComponent);
