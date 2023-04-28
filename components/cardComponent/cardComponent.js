@@ -23,26 +23,26 @@ class CardComponent extends HTMLElement {
     }
 
     render() {
-
-        let namenospaces = this.name.replaceAll(" ", "-")
-
-        let url = "./Thirdpage.html?id=" + namenospaces
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="./components/cardComponent/cardComponent.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <div class="card">
             <div class="img-container"> 
                 <img src="${this.url}" class="image">
-
             </div>
                 
             <div class="content">
                 <p class="tag">${this.type}</p>
-                <h3 class="title">${this.name}</h3>
-                <p class="description">${this.description}</p>
-                <p class="price">Price $${this.price}</p>
-                <a href=${url}><button class="buy-btn">BUY NOW</button></a> 
+                <div class="title-wrapper">
+                    <h3 class="title">${this.name}</h3>
+                    <p class="price">$${this.price}</p>
+                </div>
+                <button class="buy-btn">BUY NOW</button> 
             </div>
+
+            <button class="like-btn">
+                <img src="./icons/heart.png" alt="Like">
+            </button>
         </div>
         `;
     }

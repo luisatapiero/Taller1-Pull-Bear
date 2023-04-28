@@ -12,6 +12,17 @@
    display: flex;
    flex-direction: column;
    height: 100%;
+   position: relative;
+}
+
+.like-btn {
+   border: none;
+   background-color: transparent;
+   position: absolute;
+   padding: 0;
+   right: 10px;
+   top: 10px;
+   border-radius: 50%;
 }
 
 .image {
@@ -44,21 +55,25 @@
 }
 
 .price {
-   
    margin-top: auto;
    line-height: 15px;
    padding: 0;
-   margin: 45px 0;
-   font-weight: 600;
-   font-size: 25px;
+   font-weight: 400;
+   font-size: 16px;
    display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    
 }
- 
+
+.title-wrapper {
+   display: flex;
+   gap: 16px;
+   justify-content: space-between;
+   align-items: flex-start;
+}
+
 .buy-btn {
    display: block;
    margin-top: auto;
@@ -77,7 +92,7 @@
  
 .title {
    margin-bottom: 6px;
-   
+   font-size: 16px;
 }
 
 .description {
@@ -91,9 +106,8 @@
 
    .content{
 
-      margin-top: -174px;
+      margin-top: -67px;
        
       }
-
 
 }

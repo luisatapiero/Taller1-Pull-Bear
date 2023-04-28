@@ -27,8 +27,12 @@ class firstComponent extends HTMLElement {
         <div class="container">
             <aside class="filters hidden">
             <div class="menu">
+            <h3 class="heading">Precio</h3>
+            <div class = "price-div">
                 <button class="menu-item menu-item-button" id="price-asc">Precio ascendente</button>
-                <button class="menu-item menu-item-button" id="price-desc">Precio descendente</button>
+                <button class="menu-item menu-item-button menu-item-button-margin" id="price-desc">Precio descendente</button>
+                </div>
+                <h3 class="heading">Items</h3>
                 <div class="menu-inner">
                 <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-pants">
                 <label class="menu-item" for="filter-pants">Pants</label>
@@ -49,60 +53,49 @@ class firstComponent extends HTMLElement {
                 <div class="container-fluid">
     <div class="row" id="fs_app">
     
-        <section class="col-12" id="fs_distance_body">
-        </section>
+      
 
         <section class="col-12" id="fs_time_body">
             <span class="heading">
-                By Time
+               Color
             </span>
             <div class="contents">
-                <ul>
+                <ul class="color-filters-container">
                     <li>
-                        <span>Less than 30 Min</span>
-                    
+                        <button class="color-filter" data-value="Black" style="--bg-color: #333333;"></button>
                     </li>
                     <li>
-                        
+                        <button class="color-filter" data-value="Grey" style="--bg-color: #D3D3D3;"></button>
                     </li>
-                    <li class="active">
-                        <span>45 Min - 55 Min</span>
-                
+                    <li>
+                        <button class="color-filter" data-value="pink" style="--bg-color: #eba9d7;"></button>
+                    </li>
+                    <li>
+                        <button class="color-filter" data-value="pink" style="--bg-color: #eba9d7;"></button>
+                    </li>
+                    <li>
+                        <button class="color-filter" data-value="pink" style="--bg-color: #eba9d7;"></button>
+                    </li>
+                    <li>
+                        <button class="color-filter" data-value="pink" style="--bg-color: #eba9d7;"></button>
+                    </li>
+                    <li>
+                        <button class="color-filter" data-value="pink" style="--bg-color: #eba9d7;"></button>
+                    </li>
+                    <li>
+                        <button class="color-filter" data-value="pink" style="--bg-color: #eba9d7;"></button>
+                    </li>
+                    <li>
+                        <button class="color-filter" data-value="green" style="--bg-color: #509632;"></button>
                     </li>
                 </ul>
             </div>
+            <app-slider></app-slider>
         </section>
 
-        <section class="col-12" id="fs_time_body">
-        <span class="heading">
-            By Time
-        </span>
-        <div class="contents">
-            <ul>
-                <li>
-                    <span>Less than 30 Min</span>
-                </li>
-                <li>
-                    <span>30 Min - 45 Min</span>
-                </li>
-                <li class="active">
-                    <span>45 Min - 55 Min</span>
-                    
-                        <i class="fa fa-check"></i>
-                    </span>
-                </li>
-            </ul>
-        </div>
-    </section>
-    </div>
-</div>
-
-      <div 
-      <div class="upper-footer-buttons-follow-div">
-              <button class="upper-footer-buttons-follow-div-button"> <img
-                  class="upper-footer-buttons-follow-div-button-img" src="icons/heart.png" alt=""></button>
-      </div>
-
+        
+ 
+     
 
 
             </aside>   
@@ -122,6 +115,20 @@ class firstComponent extends HTMLElement {
         let hoodieFilter = this.shadowRoot.getElementById("filter-hoodie");
         let skirtFilter = this.shadowRoot.getElementById("filter-skirt");
         let tshirtFilter = this.shadowRoot.getElementById("filter-t-shirt");
+        let botoncolor = this.shadowRoot.querySelectorAll(".color-filter");
+
+        botoncolor.forEach(btn => btn.addEventListener("click", () => {
+            if (btn.classList.contains("active")) {
+                btn.classList.remove("active");
+                delete this.filters.color;
+            } else {
+                this.filters.color = btn.dataset.value;
+                botoncolor.forEach(boton => boton.classList.remove("active"));
+                btn.classList.add("active");
+            }
+
+            this.render();
+        }));
 
         pantsFilter.addEventListener('click', (e) => {
             if (e.target.checked)
@@ -175,11 +182,9 @@ class firstComponent extends HTMLElement {
     }
 
     render() {
-        
         let card = this.shadowRoot.getElementById("cards");
         card.innerHTML = '';
         this.filterItemsArray(this.filters).forEach((item) => {
-            
             card.innerHTML += `            
                 <app-card 
                     name="${item.name}" 
@@ -187,8 +192,7 @@ class firstComponent extends HTMLElement {
                     url="${item.url}" 
                     description="${item.description}" 
                     price="${item.price}">
-                </app-card>    
-                
+                </app-card>      
             `
         })
 
@@ -231,13 +235,13 @@ class firstComponent extends HTMLElement {
 
     printData() {
         getData().then((a) => {
-            this.list = a
-            this.render()
+            this.list = a;
+            console.log(a);
+            this.render();
         })
 
     }
 
-    
 
 }
 customElements.define("app-header", firstComponent);

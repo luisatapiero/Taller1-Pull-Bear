@@ -59,6 +59,12 @@ width: 62px!important;
 
 }
 
+.price-div{
+
+    margin-bottom: 20px;
+
+}
+
 .card-wrapper {
     display: flex;
     flex-grow: 1;
@@ -66,6 +72,7 @@ width: 62px!important;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    padding-bottom: 14.3em;
 }
 
 .filters {
@@ -76,6 +83,7 @@ width: 62px!important;
     box-shadow: 0px 4px 21px rgba(0, 0, 0, 0.25);
     transition: transform 0.3s ease-out;
     z-index: 10;
+    max-width: 220px;
 }
 
 .filters.hidden {
@@ -89,7 +97,7 @@ width: 62px!important;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    margin: 0 29px;
+    margin: 29px;
     margin-top: 50px;
     
 
@@ -106,7 +114,6 @@ width: 62px!important;
 
     display: flex;
     flex-direction: row;
-    margin: 0 29px
 
 }
 
@@ -148,6 +155,29 @@ width: 62px!important;
 
 }
 
+.color-filter {
+    background-color: var(--bg-color);
+    cursor: pointer;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+}
+
+.color-filter:hover {
+    border: 1px solid black;
+}
+
+.color-filter.active {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.color-filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
 .menu-item-button {
 
@@ -169,7 +199,6 @@ width: 62px!important;
 #fs_app>section:not(#fs_header_bar) {
     padding-top: 25px;
     padding-bottom: 10px;
-    margin: 0 29px;
     border-bottom: 2px solid #eee;
 }
 
@@ -211,7 +240,6 @@ width: 62px!important;
 
 #fs_distance_body ul li {
     list-style: none;
-    margin-bottom: 18px;
     font-size: 13px;
     font-weight: 400;
 }
@@ -227,13 +255,11 @@ width: 62px!important;
 
 #fs_time_body ul {
     padding: 0;
-    display: block;
     margin-top: 15px;
 }
 
 #fs_time_body ul li {
     list-style: none;
-    margin-bottom: 18px;
     font-size: 13px;
     font-weight: 400;
 }
