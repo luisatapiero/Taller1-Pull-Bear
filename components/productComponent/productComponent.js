@@ -1,6 +1,6 @@
 class ProductComponent extends HTMLElement {
   static get observedAttributes() {
-    return ['url_1', 'url_2', 'url_3', 'url_4', 'url_5', 'type', 'name', 'description', 'category', 'price', 'color'];
+    return ['url_1', 'url_2', 'url_3', 'url_4', 'url_5', 'type', 'name', 'description', 'category', 'price', 'color1', 'color2', 'color3'];
   }
   constructor() {
     super();
@@ -14,9 +14,9 @@ class ProductComponent extends HTMLElement {
     this.description = this.getAttribute('description');
     this.category = this.getAttribute('category');
     this.price = this.getAttribute('price');
-    this.color_1 = this.getAttribute('color_1');
-    this.color_2 = this.getAttribute('color_2');
-    this.color_3 = this.getAttribute('color_3');
+    this.color1 = this.getAttribute('color1');
+    this.color2 = this.getAttribute('color2');
+    this.color3 = this.getAttribute('color3');
 
     this.attachShadow({
       mode: 'open'
@@ -32,7 +32,6 @@ class ProductComponent extends HTMLElement {
   }
 
   render() {
-    console.log('esta es la' + this.url_1);
     this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="./components/productComponent/productComponent.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -56,7 +55,7 @@ class ProductComponent extends HTMLElement {
         <div class="container-back-button" href="Secondpage.html">
             
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="angle-left"><path fill="#0a0a0a" d="M11.29,12l3.54-3.54a1,1,0,0,0,0-1.41,1,1,0,0,0-1.42,0L9.17,11.29a1,1,0,0,0,0,1.42L13.41,17a1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41Z"></path></svg>
-            <a href="Secondpage.html">Back</a>
+            <a href="Secondpage.html"+this.name>Back</a>
 
         </div>
 
@@ -112,9 +111,9 @@ class ProductComponent extends HTMLElement {
                 <label for="colour">Color</label>
                 <select name="colour" id="colour">
                 <option disabled selected value="">Choose an option</option>
-                <option value="color1">${this.color_1}</option>
-                <option value="color2">${this.color_2}</option>
-                <option value="color3">${this.color_3}</option>
+                <option value="color1">${this.color1}</option>
+                <option value="color2">${this.color2}</option>
+                <option value="color3">${this.color3}</option>
                 </select>
             </div>
 
@@ -228,7 +227,7 @@ class ProductComponent extends HTMLElement {
       <i id="left" class="fa-solid fa-angle-left"></i>
       <div class="carousel">
 
-        <a target="_blank" href="">
+        <a target="_blank" href="./Thirdpage.html?id=VARSITY-FLEECE-SWEATPANTS">
           <img src="R-viewed/1.jpg" alt="img" draggable="false" />
           <div class="overlay">
             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -311,6 +310,8 @@ class ProductComponent extends HTMLElement {
 
 
         `;
+
+        
 
     const carousel = this.shadowRoot.querySelector(".carousel"),
       firstImg = carousel.querySelectorAll("img")[0],
@@ -417,6 +418,7 @@ class ProductComponent extends HTMLElement {
       valueByDefault -= 1;
       inputQuantity.value = valueByDefault;
     });
+    
 
     const toggleDescription = this.shadowRoot.querySelector('.title-description');
     const toggleAdditionalInformation = this.shadowRoot.querySelector('.title-additional-information');
@@ -439,28 +441,9 @@ class ProductComponent extends HTMLElement {
     });
 
 
+    
 
-    const imgs = this.shadowRoot.querySelectorAll('.img-select a');
-    const imgBtns = [...imgs];
-    let imgId = 1;
-
-    imgBtns.forEach((imgItem) => {
-      imgItem.addEventListener('click', (event) => {
-        event.preventDefault();
-        imgId = imgItem.dataset.id;
-        slideImage();
-      });
-    });
-
-    function slideImage() {
-      const displayWidth = this.shadowRoot.querySelector('.img-showcase img:first-child').clientWidth;
-
-      this.shadowRoot.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
-    }
-
-    window.addEventListener('resize', slideImage);
-  }
-
+    
 
 
 

@@ -37,9 +37,9 @@ main {
     flex: 1;
   }
   */
-@media (max-width: 820px) {
+@media (max-width: 800px) {
 
-
+  
   #logo img {
     height: 20px;
     width: 192px;
@@ -50,12 +50,13 @@ main {
   }
   .card-wrapper {
     margin: 0 8%;
-  }
+    width: 100%;
+}
 
   .card-principal {
-    width: 100%;
+    width: 70%;
     flex-direction: column;
-  }
+}
 
   .img-display {
     width: 100%;
@@ -89,8 +90,20 @@ main {
   }
 
   .container-related-products {
-    padding: 43px;
+    padding: 32px;
 }
+
+.form-group label {
+  width: 36px;
+  color: #222;
+  font-weight: 700;
+}
+
+.product-imgs {
+  display: flex;
+  gap: 2%;
+}
+
 }
 
 
@@ -98,7 +111,7 @@ main {
 
 
 .card-wrapper {
-  flex: 1;
+  /*flex: 1;*/
   margin: 0 auto;
   margin: 0 11%;
 }
