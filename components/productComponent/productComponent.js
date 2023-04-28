@@ -1,39 +1,42 @@
 class ProductComponent extends HTMLElement {
-    static get observedAttributes() {
-        return ['url_1', 'url_2', 'url_3', 'url_4', 'url_5', 'type', 'name', 'description', 'category', 'price', 'color'];
-    }
-    constructor() {
-        super();
-        this.url_1 = this.getAttribute('url_1');
-        this.url_2 = this.getAttribute('url_2');
-        this.url_3 = this.getAttribute('url_3');
-        this.url_4 = this.getAttribute('url_4');
-        this.url_5 = this.getAttribute('url_5');
-        this.type = this.getAttribute('type');
-        this.name = this.getAttribute('name');
-        this.description = this.getAttribute('description');
-        this.category = this.getAttribute('category');
-        this.price = this.getAttribute('price');
-        this.color = this.getAttribute('color');
+  static get observedAttributes() {
+    return ['url_1', 'url_2', 'url_3', 'url_4', 'url_5', 'type', 'name', 'description', 'category', 'price', 'color'];
+  }
+  constructor() {
+    super();
+    this.url_1 = this.getAttribute('url_1');
+    this.url_2 = this.getAttribute('url_2');
+    this.url_3 = this.getAttribute('url_3');
+    this.url_4 = this.getAttribute('url_4');
+    this.url_5 = this.getAttribute('url_5');
+    this.type = this.getAttribute('type');
+    this.name = this.getAttribute('name');
+    this.description = this.getAttribute('description');
+    this.category = this.getAttribute('category');
+    this.price = this.getAttribute('price');
+    this.color_1 = this.getAttribute('color_1');
+    this.color_2 = this.getAttribute('color_2');
+    this.color_3 = this.getAttribute('color_3');
 
-        this.attachShadow({
-            mode: 'open'
-        })
-    }
-    connectedCallback() {
-        this.render();
-    }
-    attributeChangeCallback(propName, oldValue, newValue) {
-        this[propName] = newValue;
-        this.render();
+    this.attachShadow({
+      mode: 'open'
+    })
+  }
+  connectedCallback() {
+    this.render();
+  }
+  attributeChangeCallback(propName, oldValue, newValue) {
+    this[propName] = newValue;
+    this.render();
 
-    }
+  }
 
-    render() {
-        console.log('esta es la' + this.url_1);
-        this.shadowRoot.innerHTML = `
+  render() {
+    console.log('esta es la' + this.url_1);
+    this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="./components/productComponent/productComponent.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
         <!-- <div class="card">
             <div class="img-container"> 
                 <img src="${this.url}" class="image">
@@ -109,9 +112,9 @@ class ProductComponent extends HTMLElement {
                 <label for="colour">Color</label>
                 <select name="colour" id="colour">
                 <option disabled selected value="">Choose an option</option>
-                <option value="${this.color}">${this.color}</option>
-                <option value="Yellow">Yellow</option>
-                <option value="Blue">Blue</option>
+                <option value="color1">${this.color_1}</option>
+                <option value="color2">${this.color_2}</option>
+                <option value="color3">${this.color_3}</option>
                 </select>
             </div>
 
@@ -177,7 +180,26 @@ class ProductComponent extends HTMLElement {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="angle-down"><path fill="#0a0a0a" d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"></path></svg>
                 </div>
                 <div class="text-reviews hidden">
-                <p>-------------------------</p>
+              <p>There are no reviews yet.</p>
+              <form class="review-form">
+                  <div class="form-group-review">
+                    
+                    <div class="reviews-counter">
+                  <div class="rate">
+                      <input type="radio" id="star5" name="rate" value="5" />
+                      <label for="star5" title="text">5 stars</label>
+                      <input type="radio" id="star4" name="rate" value="4" />
+                      <label for="star4" title="text">4 stars</label>
+                      <input type="radio" id="star3" name="rate" value="3" />
+                      <label for="star3" title="text">3 stars</label>
+                      <input type="radio" id="star2" name="rate" value="2" />
+                      <label for="star2" title="text">2 stars</label>
+                      <input type="radio" id="star1" name="rate" value="1" />
+                      <label for="star1" title="text">1 star</label>
+                  </div>
+                </div>
+                <label>Your rating</label>
+              </div>
                 </div>
             </div>
 
@@ -195,137 +217,262 @@ class ProductComponent extends HTMLElement {
         
         </main>
 
+        
+
         <section class="container-related-products">
         <h2>You might also like</h2>
-        <div class="card-list-products">
-            <div class="card">
-                <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80" alt="">
-                </div>
-                <div class="info-card">
-                    <div class="text-product">
-                        <h3>Nike - Roshe Run</h3>
-                        <p class="category">Footwear, Sneakers</p>
-                    </div>
-                    <div class="price">$85.00</div>
-                </div>
-            </div>
+        
+        <section id="carrusel">
 
-            <div class="card">
-                <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80" alt="">
-                </div>
-                <div class="info-card">
-                    <div class="text-product">
-                        <h3>Nike - Roshe Run</h3>
-                        <p class="category">Footwear, Sneakers</p>
-                    </div>
-                    <div class="price">$85.00</div>
-                </div>
-            </div>
+    <div class="wrapper">
+      <i id="left" class="fa-solid fa-angle-left"></i>
+      <div class="carousel">
 
-            <div class="card">
-                <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1131&q=80" alt="">
-                </div>
-                <div class="info-card">
-                    <div class="text-product">
-                        <h3>Nike - Roshe Run</h3>
-                        <p class="category">Footwear, Sneakers</p>
-                    </div>
-                    <div class="price">$85.00</div>
-                </div>
-            </div>
+        <a target="_blank" href="">
+          <img src="R-viewed/1.jpg" alt="img" draggable="false" />
+          <div class="overlay">
+            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10 0C7.28417 0 6.94362 0.0119481 5.877 0.0623956C4.81262 0.11275 4.08569 0.288082 3.4496 0.544394C2.79201 0.809413 2.23434 1.16403 1.67842 1.74053C1.12247 2.31703 0.780514 2.89542 0.524987 3.57736C0.277766 4.23697 0.108755 4.99081 0.060138 6.0946C0.0114917 7.20071 0 7.55388 0 10.3703C0 13.1866 0.0114917 13.5398 0.060138 14.6459C0.108755 15.7497 0.277766 16.5035 0.524987 17.1632C0.780544 17.8451 1.1225 18.4234 1.67842 19C2.23437 19.5765 2.79201 19.9311 3.4496 20.1961C4.08569 20.4524 4.81262 20.6277 5.877 20.6781C6.94362 20.7286 7.28417 20.7405 10 20.7405C12.7158 20.7405 13.0564 20.7286 14.123 20.6781C15.1874 20.6278 15.9143 20.4524 16.5504 20.1961C17.208 19.9311 17.7656 19.5765 18.3216 19C18.8775 18.4234 19.2195 17.8451 19.475 17.1632C19.7222 16.5035 19.8913 15.7497 19.9398 14.6459C19.9885 13.5398 20 13.1866 20 10.3703C20 7.55388 19.9885 7.20071 19.9398 6.0946C19.8913 4.99081 19.7222 4.23697 19.475 3.57736C19.2195 2.89542 18.8775 2.31703 18.3216 1.74053C17.7656 1.16403 17.208 0.809413 16.5504 0.544394C15.9143 0.288082 15.1874 0.11275 14.123 0.0623956C13.0564 0.0119481 12.7158 0 10 0ZM10 1.8685C12.6701 1.8685 12.9864 1.87909 14.0409 1.92898C15.0159 1.97508 15.5454 2.14402 15.8977 2.28604C16.3645 2.47418 16.6976 2.69888 17.0475 3.06177C17.3975 3.42466 17.6142 3.77013 17.7956 4.25417C17.9325 4.61959 18.0954 5.16871 18.1399 6.17979C18.188 7.2733 18.1982 7.6013 18.1982 10.3703C18.1982 13.1392 18.188 13.4672 18.1399 14.5607C18.0954 15.5718 17.9325 16.1209 17.7956 16.4863C17.6142 16.9704 17.3975 17.3159 17.0475 17.6787C16.6976 18.0416 16.3645 18.2663 15.8977 18.4545C15.5454 18.5965 15.0158 18.7654 14.0409 18.8115C12.9866 18.8614 12.6703 18.872 10 18.872C7.32969 18.872 7.01349 18.8614 5.95914 18.8115C4.98413 18.7654 4.45465 18.5965 4.10231 18.4545C3.63549 18.2663 3.30238 18.0416 2.95248 17.6787C2.60255 17.3159 2.38584 16.9704 2.20442 16.4864C2.06747 16.1209 1.90459 15.5718 1.86011 14.5607C1.812 13.4672 1.80179 13.1392 1.80179 10.3703C1.80179 7.6013 1.812 7.2733 1.86011 6.17979C1.90459 5.16867 2.06747 4.61959 2.20442 4.2542C2.38584 3.7701 2.60255 3.42466 2.95245 3.0618C3.30238 2.69888 3.63552 2.47418 4.10228 2.28604C4.45465 2.14402 4.98416 1.97508 5.95914 1.92898C7.01361 1.87909 7.3299 1.8685 10 1.8685"
+                fill="white" />
+              <path
+                d="M10.0004 13.8267C8.1594 13.8267 6.66702 12.2791 6.66702 10.37C6.66702 8.46083 8.1594 6.9132 10.0004 6.9132C11.8413 6.9132 13.3337 8.46083 13.3337 10.37C13.3337 12.2791 11.8413 13.8267 10.0004 13.8267ZM10.0004 5.0447C7.16429 5.0447 4.86523 7.42888 4.86523 10.37C4.86523 13.311 7.16429 15.6952 10.0004 15.6952C12.8364 15.6952 15.1355 13.311 15.1355 10.37C15.1355 7.42888 12.8364 5.0447 10.0004 5.0447ZM16.5384 4.8343C16.5384 5.52161 16.0011 6.07872 15.3384 6.07872C14.6757 6.07872 14.1384 5.52161 14.1384 4.8343C14.1384 4.14702 14.6757 3.58984 15.3384 3.58984C16.0011 3.58984 16.5384 4.14702 16.5384 4.8343Z"
+                fill="white" />
+            </svg>
 
-            <div class="card">
-                <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1131&q=80" alt="">
-                </div>
-                <div class="info-card">
-                    <div class="text-product">
-                        <h3>Nike - Roshe Run</h3>
-                        <p class="category">Footwear, Sneakers</p>
-                    </div>
-                    <div class="price">$85.00</div>
-                </div>
-            </div>
+          </div>
+
+        </a>
+
+        <a target="_blank" href="https://www.instagram.com/p/CplunC5JGed/">
+          <img src="R-viewed/2.jpg" alt="img" draggable="false" />
+          <div class="overlay">
+            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10 0C7.28417 0 6.94362 0.0119481 5.877 0.0623956C4.81262 0.11275 4.08569 0.288082 3.4496 0.544394C2.79201 0.809413 2.23434 1.16403 1.67842 1.74053C1.12247 2.31703 0.780514 2.89542 0.524987 3.57736C0.277766 4.23697 0.108755 4.99081 0.060138 6.0946C0.0114917 7.20071 0 7.55388 0 10.3703C0 13.1866 0.0114917 13.5398 0.060138 14.6459C0.108755 15.7497 0.277766 16.5035 0.524987 17.1632C0.780544 17.8451 1.1225 18.4234 1.67842 19C2.23437 19.5765 2.79201 19.9311 3.4496 20.1961C4.08569 20.4524 4.81262 20.6277 5.877 20.6781C6.94362 20.7286 7.28417 20.7405 10 20.7405C12.7158 20.7405 13.0564 20.7286 14.123 20.6781C15.1874 20.6278 15.9143 20.4524 16.5504 20.1961C17.208 19.9311 17.7656 19.5765 18.3216 19C18.8775 18.4234 19.2195 17.8451 19.475 17.1632C19.7222 16.5035 19.8913 15.7497 19.9398 14.6459C19.9885 13.5398 20 13.1866 20 10.3703C20 7.55388 19.9885 7.20071 19.9398 6.0946C19.8913 4.99081 19.7222 4.23697 19.475 3.57736C19.2195 2.89542 18.8775 2.31703 18.3216 1.74053C17.7656 1.16403 17.208 0.809413 16.5504 0.544394C15.9143 0.288082 15.1874 0.11275 14.123 0.0623956C13.0564 0.0119481 12.7158 0 10 0ZM10 1.8685C12.6701 1.8685 12.9864 1.87909 14.0409 1.92898C15.0159 1.97508 15.5454 2.14402 15.8977 2.28604C16.3645 2.47418 16.6976 2.69888 17.0475 3.06177C17.3975 3.42466 17.6142 3.77013 17.7956 4.25417C17.9325 4.61959 18.0954 5.16871 18.1399 6.17979C18.188 7.2733 18.1982 7.6013 18.1982 10.3703C18.1982 13.1392 18.188 13.4672 18.1399 14.5607C18.0954 15.5718 17.9325 16.1209 17.7956 16.4863C17.6142 16.9704 17.3975 17.3159 17.0475 17.6787C16.6976 18.0416 16.3645 18.2663 15.8977 18.4545C15.5454 18.5965 15.0158 18.7654 14.0409 18.8115C12.9866 18.8614 12.6703 18.872 10 18.872C7.32969 18.872 7.01349 18.8614 5.95914 18.8115C4.98413 18.7654 4.45465 18.5965 4.10231 18.4545C3.63549 18.2663 3.30238 18.0416 2.95248 17.6787C2.60255 17.3159 2.38584 16.9704 2.20442 16.4864C2.06747 16.1209 1.90459 15.5718 1.86011 14.5607C1.812 13.4672 1.80179 13.1392 1.80179 10.3703C1.80179 7.6013 1.812 7.2733 1.86011 6.17979C1.90459 5.16867 2.06747 4.61959 2.20442 4.2542C2.38584 3.7701 2.60255 3.42466 2.95245 3.0618C3.30238 2.69888 3.63552 2.47418 4.10228 2.28604C4.45465 2.14402 4.98416 1.97508 5.95914 1.92898C7.01361 1.87909 7.3299 1.8685 10 1.8685"
+                fill="white" />
+              <path
+                d="M10.0004 13.8267C8.1594 13.8267 6.66702 12.2791 6.66702 10.37C6.66702 8.46083 8.1594 6.9132 10.0004 6.9132C11.8413 6.9132 13.3337 8.46083 13.3337 10.37C13.3337 12.2791 11.8413 13.8267 10.0004 13.8267ZM10.0004 5.0447C7.16429 5.0447 4.86523 7.42888 4.86523 10.37C4.86523 13.311 7.16429 15.6952 10.0004 15.6952C12.8364 15.6952 15.1355 13.311 15.1355 10.37C15.1355 7.42888 12.8364 5.0447 10.0004 5.0447ZM16.5384 4.8343C16.5384 5.52161 16.0011 6.07872 15.3384 6.07872C14.6757 6.07872 14.1384 5.52161 14.1384 4.8343C14.1384 4.14702 14.6757 3.58984 15.3384 3.58984C16.0011 3.58984 16.5384 4.14702 16.5384 4.8343Z"
+                fill="white" />
+            </svg>
+          </div>
+        </a>
+
+        <a target="_blank" href="https://www.instagram.com/p/Cnw8NZ7oDcC/">
+          <img src="R-viewed/3.jpg" alt="img" draggable="false" />
+          <div class="overlay">
+            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10 0C7.28417 0 6.94362 0.0119481 5.877 0.0623956C4.81262 0.11275 4.08569 0.288082 3.4496 0.544394C2.79201 0.809413 2.23434 1.16403 1.67842 1.74053C1.12247 2.31703 0.780514 2.89542 0.524987 3.57736C0.277766 4.23697 0.108755 4.99081 0.060138 6.0946C0.0114917 7.20071 0 7.55388 0 10.3703C0 13.1866 0.0114917 13.5398 0.060138 14.6459C0.108755 15.7497 0.277766 16.5035 0.524987 17.1632C0.780544 17.8451 1.1225 18.4234 1.67842 19C2.23437 19.5765 2.79201 19.9311 3.4496 20.1961C4.08569 20.4524 4.81262 20.6277 5.877 20.6781C6.94362 20.7286 7.28417 20.7405 10 20.7405C12.7158 20.7405 13.0564 20.7286 14.123 20.6781C15.1874 20.6278 15.9143 20.4524 16.5504 20.1961C17.208 19.9311 17.7656 19.5765 18.3216 19C18.8775 18.4234 19.2195 17.8451 19.475 17.1632C19.7222 16.5035 19.8913 15.7497 19.9398 14.6459C19.9885 13.5398 20 13.1866 20 10.3703C20 7.55388 19.9885 7.20071 19.9398 6.0946C19.8913 4.99081 19.7222 4.23697 19.475 3.57736C19.2195 2.89542 18.8775 2.31703 18.3216 1.74053C17.7656 1.16403 17.208 0.809413 16.5504 0.544394C15.9143 0.288082 15.1874 0.11275 14.123 0.0623956C13.0564 0.0119481 12.7158 0 10 0ZM10 1.8685C12.6701 1.8685 12.9864 1.87909 14.0409 1.92898C15.0159 1.97508 15.5454 2.14402 15.8977 2.28604C16.3645 2.47418 16.6976 2.69888 17.0475 3.06177C17.3975 3.42466 17.6142 3.77013 17.7956 4.25417C17.9325 4.61959 18.0954 5.16871 18.1399 6.17979C18.188 7.2733 18.1982 7.6013 18.1982 10.3703C18.1982 13.1392 18.188 13.4672 18.1399 14.5607C18.0954 15.5718 17.9325 16.1209 17.7956 16.4863C17.6142 16.9704 17.3975 17.3159 17.0475 17.6787C16.6976 18.0416 16.3645 18.2663 15.8977 18.4545C15.5454 18.5965 15.0158 18.7654 14.0409 18.8115C12.9866 18.8614 12.6703 18.872 10 18.872C7.32969 18.872 7.01349 18.8614 5.95914 18.8115C4.98413 18.7654 4.45465 18.5965 4.10231 18.4545C3.63549 18.2663 3.30238 18.0416 2.95248 17.6787C2.60255 17.3159 2.38584 16.9704 2.20442 16.4864C2.06747 16.1209 1.90459 15.5718 1.86011 14.5607C1.812 13.4672 1.80179 13.1392 1.80179 10.3703C1.80179 7.6013 1.812 7.2733 1.86011 6.17979C1.90459 5.16867 2.06747 4.61959 2.20442 4.2542C2.38584 3.7701 2.60255 3.42466 2.95245 3.0618C3.30238 2.69888 3.63552 2.47418 4.10228 2.28604C4.45465 2.14402 4.98416 1.97508 5.95914 1.92898C7.01361 1.87909 7.3299 1.8685 10 1.8685"
+                fill="white" />
+              <path
+                d="M10.0004 13.8267C8.1594 13.8267 6.66702 12.2791 6.66702 10.37C6.66702 8.46083 8.1594 6.9132 10.0004 6.9132C11.8413 6.9132 13.3337 8.46083 13.3337 10.37C13.3337 12.2791 11.8413 13.8267 10.0004 13.8267ZM10.0004 5.0447C7.16429 5.0447 4.86523 7.42888 4.86523 10.37C4.86523 13.311 7.16429 15.6952 10.0004 15.6952C12.8364 15.6952 15.1355 13.311 15.1355 10.37C15.1355 7.42888 12.8364 5.0447 10.0004 5.0447ZM16.5384 4.8343C16.5384 5.52161 16.0011 6.07872 15.3384 6.07872C14.6757 6.07872 14.1384 5.52161 14.1384 4.8343C14.1384 4.14702 14.6757 3.58984 15.3384 3.58984C16.0011 3.58984 16.5384 4.14702 16.5384 4.8343Z"
+                fill="white" />
+            </svg>
+          </div>
+        </a>
+        <a target="_blank" href="https://www.instagram.com/p/CplLFVzjphb/">
+          <img src="R-viewed/4.jpg" alt="img" draggable="false" />
+          <div class="overlay">
+            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10 0C7.28417 0 6.94362 0.0119481 5.877 0.0623956C4.81262 0.11275 4.08569 0.288082 3.4496 0.544394C2.79201 0.809413 2.23434 1.16403 1.67842 1.74053C1.12247 2.31703 0.780514 2.89542 0.524987 3.57736C0.277766 4.23697 0.108755 4.99081 0.060138 6.0946C0.0114917 7.20071 0 7.55388 0 10.3703C0 13.1866 0.0114917 13.5398 0.060138 14.6459C0.108755 15.7497 0.277766 16.5035 0.524987 17.1632C0.780544 17.8451 1.1225 18.4234 1.67842 19C2.23437 19.5765 2.79201 19.9311 3.4496 20.1961C4.08569 20.4524 4.81262 20.6277 5.877 20.6781C6.94362 20.7286 7.28417 20.7405 10 20.7405C12.7158 20.7405 13.0564 20.7286 14.123 20.6781C15.1874 20.6278 15.9143 20.4524 16.5504 20.1961C17.208 19.9311 17.7656 19.5765 18.3216 19C18.8775 18.4234 19.2195 17.8451 19.475 17.1632C19.7222 16.5035 19.8913 15.7497 19.9398 14.6459C19.9885 13.5398 20 13.1866 20 10.3703C20 7.55388 19.9885 7.20071 19.9398 6.0946C19.8913 4.99081 19.7222 4.23697 19.475 3.57736C19.2195 2.89542 18.8775 2.31703 18.3216 1.74053C17.7656 1.16403 17.208 0.809413 16.5504 0.544394C15.9143 0.288082 15.1874 0.11275 14.123 0.0623956C13.0564 0.0119481 12.7158 0 10 0ZM10 1.8685C12.6701 1.8685 12.9864 1.87909 14.0409 1.92898C15.0159 1.97508 15.5454 2.14402 15.8977 2.28604C16.3645 2.47418 16.6976 2.69888 17.0475 3.06177C17.3975 3.42466 17.6142 3.77013 17.7956 4.25417C17.9325 4.61959 18.0954 5.16871 18.1399 6.17979C18.188 7.2733 18.1982 7.6013 18.1982 10.3703C18.1982 13.1392 18.188 13.4672 18.1399 14.5607C18.0954 15.5718 17.9325 16.1209 17.7956 16.4863C17.6142 16.9704 17.3975 17.3159 17.0475 17.6787C16.6976 18.0416 16.3645 18.2663 15.8977 18.4545C15.5454 18.5965 15.0158 18.7654 14.0409 18.8115C12.9866 18.8614 12.6703 18.872 10 18.872C7.32969 18.872 7.01349 18.8614 5.95914 18.8115C4.98413 18.7654 4.45465 18.5965 4.10231 18.4545C3.63549 18.2663 3.30238 18.0416 2.95248 17.6787C2.60255 17.3159 2.38584 16.9704 2.20442 16.4864C2.06747 16.1209 1.90459 15.5718 1.86011 14.5607C1.812 13.4672 1.80179 13.1392 1.80179 10.3703C1.80179 7.6013 1.812 7.2733 1.86011 6.17979C1.90459 5.16867 2.06747 4.61959 2.20442 4.2542C2.38584 3.7701 2.60255 3.42466 2.95245 3.0618C3.30238 2.69888 3.63552 2.47418 4.10228 2.28604C4.45465 2.14402 4.98416 1.97508 5.95914 1.92898C7.01361 1.87909 7.3299 1.8685 10 1.8685"
+                fill="white" />
+              <path
+                d="M10.0004 13.8267C8.1594 13.8267 6.66702 12.2791 6.66702 10.37C6.66702 8.46083 8.1594 6.9132 10.0004 6.9132C11.8413 6.9132 13.3337 8.46083 13.3337 10.37C13.3337 12.2791 11.8413 13.8267 10.0004 13.8267ZM10.0004 5.0447C7.16429 5.0447 4.86523 7.42888 4.86523 10.37C4.86523 13.311 7.16429 15.6952 10.0004 15.6952C12.8364 15.6952 15.1355 13.311 15.1355 10.37C15.1355 7.42888 12.8364 5.0447 10.0004 5.0447ZM16.5384 4.8343C16.5384 5.52161 16.0011 6.07872 15.3384 6.07872C14.6757 6.07872 14.1384 5.52161 14.1384 4.8343C14.1384 4.14702 14.6757 3.58984 15.3384 3.58984C16.0011 3.58984 16.5384 4.14702 16.5384 4.8343Z"
+                fill="white" />
+            </svg>
+          </div>
+        </a>
+        <a target="_blank" href="https://www.instagram.com/p/ChknYknq3An/">
+          <img src="R-viewed/5.jpg" alt="img" draggable="false" />
+          <div class="overlay">
+            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10 0C7.28417 0 6.94362 0.0119481 5.877 0.0623956C4.81262 0.11275 4.08569 0.288082 3.4496 0.544394C2.79201 0.809413 2.23434 1.16403 1.67842 1.74053C1.12247 2.31703 0.780514 2.89542 0.524987 3.57736C0.277766 4.23697 0.108755 4.99081 0.060138 6.0946C0.0114917 7.20071 0 7.55388 0 10.3703C0 13.1866 0.0114917 13.5398 0.060138 14.6459C0.108755 15.7497 0.277766 16.5035 0.524987 17.1632C0.780544 17.8451 1.1225 18.4234 1.67842 19C2.23437 19.5765 2.79201 19.9311 3.4496 20.1961C4.08569 20.4524 4.81262 20.6277 5.877 20.6781C6.94362 20.7286 7.28417 20.7405 10 20.7405C12.7158 20.7405 13.0564 20.7286 14.123 20.6781C15.1874 20.6278 15.9143 20.4524 16.5504 20.1961C17.208 19.9311 17.7656 19.5765 18.3216 19C18.8775 18.4234 19.2195 17.8451 19.475 17.1632C19.7222 16.5035 19.8913 15.7497 19.9398 14.6459C19.9885 13.5398 20 13.1866 20 10.3703C20 7.55388 19.9885 7.20071 19.9398 6.0946C19.8913 4.99081 19.7222 4.23697 19.475 3.57736C19.2195 2.89542 18.8775 2.31703 18.3216 1.74053C17.7656 1.16403 17.208 0.809413 16.5504 0.544394C15.9143 0.288082 15.1874 0.11275 14.123 0.0623956C13.0564 0.0119481 12.7158 0 10 0ZM10 1.8685C12.6701 1.8685 12.9864 1.87909 14.0409 1.92898C15.0159 1.97508 15.5454 2.14402 15.8977 2.28604C16.3645 2.47418 16.6976 2.69888 17.0475 3.06177C17.3975 3.42466 17.6142 3.77013 17.7956 4.25417C17.9325 4.61959 18.0954 5.16871 18.1399 6.17979C18.188 7.2733 18.1982 7.6013 18.1982 10.3703C18.1982 13.1392 18.188 13.4672 18.1399 14.5607C18.0954 15.5718 17.9325 16.1209 17.7956 16.4863C17.6142 16.9704 17.3975 17.3159 17.0475 17.6787C16.6976 18.0416 16.3645 18.2663 15.8977 18.4545C15.5454 18.5965 15.0158 18.7654 14.0409 18.8115C12.9866 18.8614 12.6703 18.872 10 18.872C7.32969 18.872 7.01349 18.8614 5.95914 18.8115C4.98413 18.7654 4.45465 18.5965 4.10231 18.4545C3.63549 18.2663 3.30238 18.0416 2.95248 17.6787C2.60255 17.3159 2.38584 16.9704 2.20442 16.4864C2.06747 16.1209 1.90459 15.5718 1.86011 14.5607C1.812 13.4672 1.80179 13.1392 1.80179 10.3703C1.80179 7.6013 1.812 7.2733 1.86011 6.17979C1.90459 5.16867 2.06747 4.61959 2.20442 4.2542C2.38584 3.7701 2.60255 3.42466 2.95245 3.0618C3.30238 2.69888 3.63552 2.47418 4.10228 2.28604C4.45465 2.14402 4.98416 1.97508 5.95914 1.92898C7.01361 1.87909 7.3299 1.8685 10 1.8685"
+                fill="white" />
+              <path
+                d="M10.0004 13.8267C8.1594 13.8267 6.66702 12.2791 6.66702 10.37C6.66702 8.46083 8.1594 6.9132 10.0004 6.9132C11.8413 6.9132 13.3337 8.46083 13.3337 10.37C13.3337 12.2791 11.8413 13.8267 10.0004 13.8267ZM10.0004 5.0447C7.16429 5.0447 4.86523 7.42888 4.86523 10.37C4.86523 13.311 7.16429 15.6952 10.0004 15.6952C12.8364 15.6952 15.1355 13.311 15.1355 10.37C15.1355 7.42888 12.8364 5.0447 10.0004 5.0447ZM16.5384 4.8343C16.5384 5.52161 16.0011 6.07872 15.3384 6.07872C14.6757 6.07872 14.1384 5.52161 14.1384 4.8343C14.1384 4.14702 14.6757 3.58984 15.3384 3.58984C16.0011 3.58984 16.5384 4.14702 16.5384 4.8343Z"
+                fill="white" />
+            </svg>
+          </div>
+        </a>
+        
+      </div>
+      <i id="right" class="fa-solid fa-angle-right"></i>
+    </div>
+
+    <a href="Secondpage.html">Discover more</a>
+  </section>
+
+    
         </div>
     </section>
 
 
         `;
 
-        const inputQuantity = this.shadowRoot.querySelector('.input-quantity');
-        const btnIncrement = this.shadowRoot.querySelector('#increment');
-        const btnDecrement = this.shadowRoot.querySelector('#decrement');
+    const carousel = this.shadowRoot.querySelector(".carousel"),
+      firstImg = carousel.querySelectorAll("img")[0],
+      arrowIcons = this.shadowRoot.querySelectorAll(".wrapper i");
 
-        let valueByDefault = parseInt(inputQuantity.value);
+    let isDragStart = false, isDragging = false, prevPageX, prevScrollLeft, positionDiff;
 
-        btnIncrement.addEventListener('click', () => {
-            valueByDefault += 1;
-            inputQuantity.value = valueByDefault;
-        });
+    const showHideIcons = () => {
+      // mostrar y ocultar el icono anterior/siguiente según el valor de desplazamiento izquierdo del carrusel
+      let scrollWidth = carousel.scrollWidth - carousel.clientWidth; // obtener el ancho máximo de desplazamiento
+      arrowIcons[0].style.display = carousel.scrollLeft == 0 ? "none" : "block";
+      arrowIcons[1].style.display = carousel.scrollLeft == scrollWidth ? "none" : "block";
+    }
 
-        btnDecrement.addEventListener('click', () => {
-            if (valueByDefault === 1) {
-                return
-            }
-            valueByDefault -= 1;
-            inputQuantity.value = valueByDefault;
-        });
+    arrowIcons.forEach(icon => {
+      icon.addEventListener("click", () => {
+        const mobileBreakpoint = 550;
 
-        const toggleDescription = this.shadowRoot.querySelector('.title-description');
-        const toggleAdditionalInformation = this.shadowRoot.querySelector('.title-additional-information');
-        const toggleReviews = this.shadowRoot.querySelector('.title-reviews');
+        if (window.innerWidth < mobileBreakpoint) {
+          // Card margin is the horizontal margin of the carousel's cards
+          const cardMargin = 14;
+          let firstImgWidth = firstImg.clientWidth + cardMargin;
 
-        const contentDescription = this.shadowRoot.querySelector('.text-description');
-        const contentAdditionalInformation = this.shadowRoot.querySelector('.text-additional-information');
-        const contentReviews = this.shadowRoot.querySelector('.text-reviews');
+          carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
+          setTimeout(() => showHideIcons(), 100); // llamar a showHideIcons después de 60ms
+        } else {
 
-        toggleDescription.addEventListener('click', () => {
-            contentDescription.classList.toggle('hidden');
-        });
+          let firstImgWidth = firstImg.clientWidth + 1400; // obteniendo el ancho del primer img y añadiendo el valor del margen 
+          // si el icono pulsado está a la izquierda, reduzca el valor de anchura del desplazamiento del carrusel a la izquierda, si no, añádalo a él
 
-        toggleAdditionalInformation.addEventListener('click', () => {
-            contentAdditionalInformation.classList.toggle('hidden');
-        });
-
-        toggleReviews.addEventListener('click', () => {
-            contentReviews.classList.toggle('hidden');
-        });
-
-
-
-        const imgs = this.shadowRoot.querySelectorAll('.img-select a');
-        const imgBtns = [...imgs];
-        let imgId = 1;
-
-        imgBtns.forEach((imgItem) => {
-            imgItem.addEventListener('click', (event) => {
-                event.preventDefault();
-                imgId = imgItem.dataset.id;
-                slideImage();
-            });
-        });
-
-        function slideImage() {
-            const displayWidth = this.shadowRoot.querySelector('.img-showcase img:first-child').clientWidth;
-
-            this.shadowRoot.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+          carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
+          setTimeout(() => showHideIcons(), 60); // llamar a showHideIcons después de 60ms
         }
+      });
+    });
 
-        window.addEventListener('resize', slideImage);
+    const autoSlide = () => {
+      // si no queda ninguna imagen por desplazar, vuelva desde aquí
+      if (carousel.scrollLeft - (carousel.scrollWidth - carousel.clientWidth) > -1 || carousel.scrollLeft <= 0) return;
+
+      positionDiff = Math.abs(positionDiff); // hacer que el valor de positionDiff sea positivo
+      let firstImgWidth = firstImg.clientWidth + 14;
+      // obtener el valor de diferencia que hay que añadir o reducir del carrusel de la izquierda para tomar el centro img medio
+      let valDifference = firstImgWidth - positionDiff;
+
+      if (carousel.scrollLeft > prevScrollLeft) { // si el usuario se desplaza hacia la derecha
+        return carousel.scrollLeft += positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
+      }
+      // isi el usuario se desplaza hacia la izquierda
+      carousel.scrollLeft -= positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
     }
 
-
-
-    set url(val) {
-        this.setAttribute('url', val);
+    const dragStart = (e) => {
+      // actualización del valor de las variables globales al pulsar el ratón
+      isDragStart = true;
+      prevPageX = e.pageX || e.touches[0].pageX;
+      prevScrollLeft = carousel.scrollLeft;
     }
 
-    get url() {
-        return this.getAttribute('url');
+    const dragging = (e) => {
+      // desplazamiento de imágenes/carrusel a la izquierda según el puntero del ratón
+      if (!isDragStart) return;
+      e.preventDefault();
+      isDragging = true;
+      carousel.classList.add("dragging");
+      positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
+      carousel.scrollLeft = prevScrollLeft - positionDiff;
+      showHideIcons();
     }
+
+    const dragStop = () => {
+      isDragStart = false;
+      carousel.classList.remove("dragging");
+
+      if (!isDragging) return;
+      isDragging = false;
+      autoSlide();
+    }
+
+    carousel.addEventListener("mousedown", dragStart);
+    carousel.addEventListener("touchstart", dragStart);
+
+    this.shadowRoot.addEventListener("mousemove", dragging);
+    carousel.addEventListener("touchmove", dragging);
+
+    this.shadowRoot.addEventListener("mouseup", dragStop);
+    carousel.addEventListener("touchend", dragStop);
+
+    const inputQuantity = this.shadowRoot.querySelector('.input-quantity');
+    const btnIncrement = this.shadowRoot.querySelector('#increment');
+    const btnDecrement = this.shadowRoot.querySelector('#decrement');
+
+    let valueByDefault = parseInt(inputQuantity.value);
+
+    btnIncrement.addEventListener('click', () => {
+      valueByDefault += 1;
+      inputQuantity.value = valueByDefault;
+    });
+
+    btnDecrement.addEventListener('click', () => {
+      if (valueByDefault === 1) {
+        return
+      }
+      valueByDefault -= 1;
+      inputQuantity.value = valueByDefault;
+    });
+
+    const toggleDescription = this.shadowRoot.querySelector('.title-description');
+    const toggleAdditionalInformation = this.shadowRoot.querySelector('.title-additional-information');
+    const toggleReviews = this.shadowRoot.querySelector('.title-reviews');
+
+    const contentDescription = this.shadowRoot.querySelector('.text-description');
+    const contentAdditionalInformation = this.shadowRoot.querySelector('.text-additional-information');
+    const contentReviews = this.shadowRoot.querySelector('.text-reviews');
+
+    toggleDescription.addEventListener('click', () => {
+      contentDescription.classList.toggle('hidden');
+    });
+
+    toggleAdditionalInformation.addEventListener('click', () => {
+      contentAdditionalInformation.classList.toggle('hidden');
+    });
+
+    toggleReviews.addEventListener('click', () => {
+      contentReviews.classList.toggle('hidden');
+    });
+
+
+
+    const imgs = this.shadowRoot.querySelectorAll('.img-select a');
+    const imgBtns = [...imgs];
+    let imgId = 1;
+
+    imgBtns.forEach((imgItem) => {
+      imgItem.addEventListener('click', (event) => {
+        event.preventDefault();
+        imgId = imgItem.dataset.id;
+        slideImage();
+      });
+    });
+
+    function slideImage() {
+      const displayWidth = this.shadowRoot.querySelector('.img-showcase img:first-child').clientWidth;
+
+      this.shadowRoot.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+    }
+
+    window.addEventListener('resize', slideImage);
+  }
+
+
+
+
+
+
+  set url(val) {
+    this.setAttribute('url', val);
+  }
+
+  get url() {
+    return this.getAttribute('url');
+  }
 }
 
 customElements.define("app-productinfo", ProductComponent);

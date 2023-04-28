@@ -189,7 +189,7 @@ class firstComponent extends HTMLElement {
                 <app-card 
                     name="${item.name}" 
                     type="${item.type}" 
-                    url="${item.url}" 
+                    url_1="${item.url_1}" 
                     description="${item.description}" 
                     price="${item.price}">
                 </app-card>      

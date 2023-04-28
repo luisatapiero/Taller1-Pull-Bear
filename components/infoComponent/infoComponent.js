@@ -59,7 +59,9 @@ class InfoComponent extends HTMLElement {
         description="${this.productDetail.description}" 
         category="${this.productDetail.category}" 
         price="${this.productDetail.price}"
-        color="${this.productDetail.color.color}">
+        color_1="${this.productDetail.color}">
+        color_2="${this.productDetail.color}">
+        color_3="${this.productDetail.color}">
       </app-productinfo>
     `;
     this.shadowRoot.appendChild(product);
