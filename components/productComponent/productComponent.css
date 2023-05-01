@@ -38,8 +38,6 @@ main {
   }
   */
 @media (max-width: 800px) {
-
-  
   #logo img {
     height: 20px;
     width: 192px;
@@ -51,70 +49,67 @@ main {
   .card-wrapper {
     margin: 0 8%;
     width: 100%;
-}
+  }
 
   .card-principal {
-    width: 70%;
+    width: 90%;
     flex-direction: column;
-}
+  }
 
   .img-display {
     width: 100%;
   }
-
+  
   .img-select {
     width: 100%;
   }
-
+  
   .container-price {
     font-size: 16px;
-
-}
-
+  }
+  
   .form-group select {
     width: 100%;
   }
-
+  
   .form-group label {
     width: 36px;
   }
-
+  
   .btn-add-to-cart {
     width: 100%;
   }
-
+  
   .product-imgs {
     display: flex;
     width: 70%;
     gap: 2%;
   }
-
+  
   .container-related-products {
     padding: 32px;
+  }
+  
+  .form-group label {
+    width: 36px;
+    color: #222;
+    font-weight: 700;
+  }
+  
+  .product-imgs {
+    display: flex;
+    gap: 2%;
+    width: 100%;
+  }
+  
+  .card-wrapper {
+    /*flex: 1;*/
+    margin: 0 auto;
+    margin: 0 11%;
+  }
+  
 }
 
-.form-group label {
-  width: 36px;
-  color: #222;
-  font-weight: 700;
-}
-
-.product-imgs {
-  display: flex;
-  gap: 2%;
-}
-
-}
-
-
-
-
-
-.card-wrapper {
-  /*flex: 1;*/
-  margin: 0 auto;
-  margin: 0 11%;
-}
 
 .card-principal {
   display: flex;
@@ -451,8 +446,7 @@ svg {
   justify-content: center;
   width: auto;
   position: relative;
-  font-family: 'Roboto Condensed';
-
+  font-family: "Roboto Condensed";
 }
 
 .wrapper i {
@@ -470,7 +464,6 @@ svg {
   transform: translateY(-50%);
   transition: transform 0.1s linear;
   box-shadow: 2px 4px 16px 2px rgba(0, 0, 0, 0.25);
-
 }
 
 .wrapper i:active {
@@ -522,8 +515,7 @@ svg {
   width: 100%;
 }
 
-
-#carrusel>a {
+#carrusel > a {
   margin: auto;
   display: block;
   margin-top: 50px;
@@ -539,7 +531,7 @@ svg {
   transition: 0.2s;
 }
 
-#carrusel>a:hover {
+#carrusel > a:hover {
   background-color: #1b1915;
   color: #f5f5f5;
 }
@@ -555,25 +547,24 @@ svg {
     width: 100%;
   }
 
-  .carousel>a {
+  .carousel > a {
     width: 100%;
   }
-
 }
 
 .reviews-counter {
   font-size: 13px;
 }
 .reviews-counter span {
-vertical-align: -2px;
+  vertical-align: -2px;
 }
 .rate {
   float: left;
   padding: 0 10px 0 0;
 }
 .rate:not(:checked) > input {
-  position:absolute;
-  top:-9999px;
+  position: absolute;
+  top: -9999px;
 }
 .rate:not(:checked) > label {
   float: right;
@@ -582,19 +573,19 @@ vertical-align: -2px;
   white-space: nowrap;
   cursor: pointer;
   font-size: 21px;
-  color:#ccc;
-margin-bottom: 0;
-line-height: 21px;
+  color: #ccc;
+  margin-bottom: 0;
+  line-height: 21px;
 }
 .rate:not(:checked) > label:before {
-  content: '\2605';
+  content: "\2605";
 }
 .rate > input:checked ~ label {
-  color: #ffc700;    
+  color: #ffc700;
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-  color: #deb217;  
+  color: #deb217;
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,

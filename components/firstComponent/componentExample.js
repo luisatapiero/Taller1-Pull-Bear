@@ -60,7 +60,7 @@ class firstComponent extends HTMLElement {
                Color
             </span>
             <div class="contents">
-                <ul class="color-filters-container">
+            <ul class="color-filters-container">
                     <li>
                         <button class="color-filter" data-value="Black" style="--bg-color: #333333;"></button>
                     </li>
@@ -68,28 +68,51 @@ class firstComponent extends HTMLElement {
                         <button class="color-filter" data-value="Grey" style="--bg-color: #D3D3D3;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="pink" style="--bg-color: #eba9d7;"></button>
+                        <button class="color-filter" data-value="Anthracite gray" style="--bg-color: #383E42;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="pink" style="--bg-color: #eba9d7;"></button>
+                        <button class="color-filter" data-value="Eggplant" style="--bg-color: #614051;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="pink" style="--bg-color: #eba9d7;"></button>
+                        <button class="color-filter" data-value="Faded Black" style="--bg-color: #4F3D3D;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="pink" style="--bg-color: #eba9d7;"></button>
+                        <button class="color-filter" data-value="Greenish" style="--bg-color: #39402D;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="pink" style="--bg-color: #eba9d7;"></button>
+                        <button class="color-filter" data-value="White" style="--bg-color: #ECEAEA;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="pink" style="--bg-color: #eba9d7;"></button>
+                        <button class="color-filter" data-value="Beige" style="--bg-color: #F5EEC5;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="green" style="--bg-color: #509632;"></button>
+                        <button class="color-filter" data-value="Blue" style="--bg-color: #213247;"></button>
                     </li>
+                    <li>
+                        <button class="color-filter" data-value="Medium Blue" style="--bg-color: #304363;"></button>
+                    </li>
+                    <li>
+                        <button class="color-filter" data-value="Brown" style="--bg-color: #582C01;"></button>
+                    </li> 
                 </ul>
             </div>
+
+<h3 class="heading">Gender</h3>
+            <div class="menu-inner">
+            <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-pants">
+            <label class="menu-item" for="filter-pants">Women</label>
+            </div>
+
+            <div class="menu-inner">
+            <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-pants">
+            <label class="menu-item" for="filter-pants">Men</label>
+            </div>
+
+            <div class="menu-inner">
+            <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-pants">
+            <label class="menu-item" for="filter-pants">Unisex</label>
+            </div>
+
             <app-slider></app-slider>
         </section>
 
@@ -120,9 +143,9 @@ class firstComponent extends HTMLElement {
         botoncolor.forEach(btn => btn.addEventListener("click", () => {
             if (btn.classList.contains("active")) {
                 btn.classList.remove("active");
-                delete this.filters.color;
+                delete this.filters.color1;
             } else {
-                this.filters.color = btn.dataset.value;
+                this.filters.color1 = btn.dataset.value;
                 botoncolor.forEach(boton => boton.classList.remove("active"));
                 btn.classList.add("active");
             }
@@ -192,6 +215,7 @@ class firstComponent extends HTMLElement {
                     url_1="${item.url_1}" 
                     description="${item.description}" 
                     price="${item.price}">
+
                 </app-card>      
             `
         })

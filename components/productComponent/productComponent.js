@@ -393,7 +393,7 @@ class ProductComponent extends HTMLElement {
 
         </a>
 
-        <a target="_blank" href="https://www.instagram.com/p/CplunC5JGed/">
+        <a target="_blank" href="./Thirdpage.html?id=VARSITY-FLEECE-SWEATPANTS">
           <img src="R-viewed/2.jpg" alt="img" draggable="false" />
           <div class="overlay">
             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -407,7 +407,7 @@ class ProductComponent extends HTMLElement {
           </div>
         </a>
 
-        <a target="_blank" href="https://www.instagram.com/p/Cnw8NZ7oDcC/">
+        <a target="_blank" href="./Thirdpage.html?id=STRAIGHT-FIT-DENIM-DUNGAREES">
           <img src="R-viewed/3.jpg" alt="img" draggable="false" />
           <div class="overlay">
             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -420,7 +420,7 @@ class ProductComponent extends HTMLElement {
             </svg>
           </div>
         </a>
-        <a target="_blank" href="https://www.instagram.com/p/CplLFVzjphb/">
+        <a target="_blank" href="./Thirdpage.html?id=WIDE-LEG-TROUSERS">
           <img src="R-viewed/4.jpg" alt="img" draggable="false" />
           <div class="overlay">
             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -433,7 +433,7 @@ class ProductComponent extends HTMLElement {
             </svg>
           </div>
         </a>
-        <a target="_blank" href="https://www.instagram.com/p/ChknYknq3An/">
+        <a target="_blank" href="./Thirdpage.html?id=HOODIE-WITH-BUTTERFLY--PRINT"">
           <img src="R-viewed/5.jpg" alt="img" draggable="false" />
           <div class="overlay">
             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">

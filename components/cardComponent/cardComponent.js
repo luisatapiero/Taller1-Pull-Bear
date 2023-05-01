@@ -1,6 +1,6 @@
 class CardComponent extends HTMLElement {
     static get observedAttributes() {
-        return ['url', 'type', 'name', 'description', 'price'];
+        return ['url', 'type', 'name', 'description', 'price','color1', 'color2','color3'];
     }
     constructor() {
         super();
@@ -9,6 +9,10 @@ class CardComponent extends HTMLElement {
         this.name = this.getAttribute('name');
         this.description = this.getAttribute('description');
         this.price = this.getAttribute('price');
+        this.color1 = this.getAttribute('color1');
+        this.color2 = this.getAttribute('color2');
+        this.color3 = this.getAttribute('color3');
+
 
         this.attachShadow({
             mode: 'open'
