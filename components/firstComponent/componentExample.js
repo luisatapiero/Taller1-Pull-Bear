@@ -22,7 +22,7 @@ class firstComponent extends HTMLElement {
         <h3 class="title-text">Top Products</h3>
         </div>
         <div class="filter-div">
-            <button class="filter">Filtro</button>
+            <button class="filter">Filtros</button>
         </div>
         <div class="container">
             <aside class="filters hidden">
@@ -32,6 +32,14 @@ class firstComponent extends HTMLElement {
                 <button class="menu-item menu-item-button" id="price-asc">Precio ascendente</button>
                 <button class="menu-item menu-item-button menu-item-button-margin" id="price-desc">Precio descendente</button>
                 </div>
+
+                <h3 class="heading">Rango de Precios</h3>
+                <div class = "price-div">
+                <button data-min="10" data-max="40" class="filter-by-price menu-item menu-item-button">10-40</button>
+                <button data-min="40" data-max="70" class="filter-by-price menu-item menu-item-button menu-item-button-margin">40-70</button>
+                <button data-min="70" data-max="200" class="filter-by-price menu-item menu-item-button menu-item-button-margin">70-200</button>
+                </div>
+
                 <h3 class="heading">Items</h3>
                 <div class="menu-inner">
                 <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-pants">
@@ -49,11 +57,19 @@ class firstComponent extends HTMLElement {
                 <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-skirt">
                 <label class="menu-item" for="filter-Skirt">Skirt</label>
                 </div>
-                
+                <div class="menu-inner">
+                <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-shirt">
+                <label class="menu-item" for="filter-Shirt">Shirt</label>
+                </div>
+                <div class="menu-inner">
+                <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-shorts">
+                <label class="menu-item" for="filter-Shorts">Shorts</label>
+                </div>
+                <div class="menu-inner">
+                <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-jacket">
+                <label class="menu-item" for="filter-Jacket">Jacket</label>
+                </div>
                 <div class="container-fluid">
-    <div class="row" id="fs_app">
-    
-      
 
         <section class="col-12" id="fs_time_body">
             <span class="heading">
@@ -94,6 +110,9 @@ class firstComponent extends HTMLElement {
                     <li>
                         <button class="color-filter" data-value="Brown" style="--bg-color: #582C01;"></button>
                     </li> 
+                    <li>
+                        <button class="color-filter" data-value="Brown" style="--bg-color: #582C01;"></button>
+                    </li> 
                 </ul>
             </div>
 
@@ -129,6 +148,7 @@ class firstComponent extends HTMLElement {
 
         const filterBtn = this.shadowRoot.querySelector(".filter");
         const filtersContainer = this.shadowRoot.querySelector(".filters");
+        const priceRangeBtns = this.shadowRoot.querySelectorAll(".filter-by-price");
         let priceAscButton = this.shadowRoot.getElementById("price-asc");
         let priceDescButton = this.shadowRoot.getElementById("price-desc");
         priceAscButton.addEventListener('click', this.sortItemsList("price", true).bind(this));
@@ -139,6 +159,39 @@ class firstComponent extends HTMLElement {
         let skirtFilter = this.shadowRoot.getElementById("filter-skirt");
         let tshirtFilter = this.shadowRoot.getElementById("filter-t-shirt");
         let botoncolor = this.shadowRoot.querySelectorAll(".color-filter");
+        let shirtFilter = this.shadowRoot.querySelectorAll(".filter-shirt");
+        let shortsFilter = this.shadowRoot.querySelectorAll(".filter-shorts");
+        let jacketFilter = this.shadowRoot.querySelectorAll(".filter-jacket");
+        let womanFilter = this.shadowRoot.querySelectorAll(".filter-woman");
+        let menFilter = this.shadowRoot.querySelectorAll(".filter-men");
+        let unisexFilter = this.shadowRoot.querySelectorAll(".filter-unisex");
+
+        priceRangeBtns.forEach(btn => btn.addEventListener('click', (e) => {
+            const min = parseInt(e.target.dataset.min);
+            const max = parseInt(e.target.dataset.max);
+
+            priceRangeBtns.forEach(priceBtn => priceBtn.classList.remove('active'));
+
+            if (this.filters['price-range']) {
+                const {
+                    min: filMin,
+                    max: filMax
+                } = this.filters['price-range'];
+
+                if (min === filMin && max === filMax) {
+                    delete this.filters['price-range'];
+                    this.render();
+                    return;
+                }
+            }
+
+            e.target.classList.add('active');
+            this.filters['price-range'] = {
+                min,
+                max
+            };
+            this.render();
+        }));
 
         botoncolor.forEach(btn => btn.addEventListener("click", () => {
             if (btn.classList.contains("active")) {
@@ -193,6 +246,70 @@ class firstComponent extends HTMLElement {
             this.render();
         });
 
+
+        /*jacketFilter.addEventListener('click', (e) => {
+            if (e.target.checked)
+                this.filters = {
+                    ...this.filters,
+                    category: "Jacket"
+                };
+            else delete this.filters.category;
+            this.render();
+        });
+
+
+        shirtFilter.addEventListener('click', (e) => {
+            if (e.target.checked)
+                this.filters = {
+                    ...this.filters,
+                    category: "Shirt"
+                };
+            else delete this.filters.category;
+            this.render();
+        });
+
+
+        shortsFilter.addEventListener('click', (e) => {
+            if (e.target.checked)
+                this.filters = {
+                    ...this.filters,
+                    category: "Shorts"
+                };
+            else delete this.filters.category;
+            this.render();
+        });
+
+        womanFilter.addEventListener('click', (e) => {
+            if (e.target.checked)
+                this.filters = {
+                    ...this.filters,
+                    category: "Women"
+                };
+            else delete this.filters.category;
+            this.render();
+        });
+
+        menFilter.addEventListener('click', (e) => {
+            if (e.target.checked)
+                this.filters = {
+                    ...this.filters,
+                    category: "Men"
+                };
+            else delete this.filters.category;
+            this.render();
+        });
+
+        unisexFilter.addEventListener('click', (e) => {
+            if (e.target.checked)
+                this.filters = {
+                    ...this.filters,
+                    category: "Unisex"
+                };
+            else delete this.filters.category;
+            this.render();
+        });*/
+
+
         filterBtn.addEventListener('click', () => {
             filtersContainer.classList.toggle(HIDDEN_CLASS);
         });
@@ -228,8 +345,18 @@ class firstComponent extends HTMLElement {
             let include = true;
 
             for (const attr in filters) {
-                if (item[attr] !== filters[attr])
-                    include = false;
+                switch (attr) {
+                    case 'price-range':
+                        const {
+                            min, max
+                        } = filters[attr];
+                        if (item.price < min || item.price > max)
+                            include = false;
+                        break;
+                    default:
+                        if (item[attr] !== filters[attr])
+                            include = false;
+                }
             }
 
             return include;
