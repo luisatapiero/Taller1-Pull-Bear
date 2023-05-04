@@ -283,9 +283,9 @@ class firstComponent extends HTMLElement {
             if (e.target.checked)
                 this.filters = {
                     ...this.filters,
-                    category: "Women"
+                    gender: "Women"
                 };
-            else delete this.filters.category;
+            else delete this.filters.gender;
             this.render();
         });
 
@@ -293,9 +293,9 @@ class firstComponent extends HTMLElement {
             if (e.target.checked)
                 this.filters = {
                     ...this.filters,
-                    category: "Men"
+                    gender: "Men"
                 };
-            else delete this.filters.category;
+            else delete this.filters.gender;
             this.render();
         });
 
@@ -303,9 +303,9 @@ class firstComponent extends HTMLElement {
             if (e.target.checked)
                 this.filters = {
                     ...this.filters,
-                    category: "Unisex"
+                    gender: "Unisex"
                 };
-            else delete this.filters.category;
+            else delete this.filters.gender;
             this.render();
         });*/
 

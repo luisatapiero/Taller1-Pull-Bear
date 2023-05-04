@@ -9,7 +9,9 @@ if (page[4] !== "Secondpage.html") {
   const searchparas = new URLSearchParams(pageNew[0]);
   const id = searchparas.get("id");
   if (id) {
-    productname = id.replace('"', "");
+    productname = decodeURIComponent(id);
+    //productname = id.replace('"', "");
+    
   }
   console.log(productname);
 }

@@ -44,48 +44,40 @@ class ProductComponent extends HTMLElement {
         const mobileBreakpoint = 550;
 
         if (window.innerWidth < mobileBreakpoint) {
-          // Card margin is the horizontal margin of the carousel's cards
           const cardMargin = 14;
           let firstImgWidth = firstImg.clientWidth + cardMargin;
 
           carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
-          setTimeout(() => showHideIcons(), 100); // llamar a showHideIcons después de 60ms
+          setTimeout(() => showHideIcons(), 100); 
         } else {
 
-          let firstImgWidth = firstImg.clientWidth + 1400; // obteniendo el ancho del primer img y añadiendo el valor del margen 
-          // si el icono pulsado está a la izquierda, reduzca el valor de anchura del desplazamiento del carrusel a la izquierda, si no, añádalo a él
-
+          let firstImgWidth = firstImg.clientWidth + 1400; 
           carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
-          setTimeout(() => showHideIcons(), 60); // llamar a showHideIcons después de 60ms
+          setTimeout(() => showHideIcons(), 60);
         }
       });
     });
 
     const autoSlide = () => {
-      // si no queda ninguna imagen por desplazar, vuelva desde aquí
       if (carousel.scrollLeft - (carousel.scrollWidth - carousel.clientWidth) > -1 || carousel.scrollLeft <= 0) return;
 
-      positionDiff = Math.abs(positionDiff); // hacer que el valor de positionDiff sea positivo
+      positionDiff = Math.abs(positionDiff); 
       let firstImgWidth = firstImg.clientWidth + 14;
-      // obtener el valor de diferencia que hay que añadir o reducir del carrusel de la izquierda para tomar el centro img medio
       let valDifference = firstImgWidth - positionDiff;
 
-      if (carousel.scrollLeft > prevScrollLeft) { // si el usuario se desplaza hacia la derecha
+      if (carousel.scrollLeft > prevScrollLeft) { 
         return carousel.scrollLeft += positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
       }
-      // isi el usuario se desplaza hacia la izquierda
       carousel.scrollLeft -= positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
     }
 
     const dragStart = (e) => {
-      // actualización del valor de las variables globales al pulsar el ratón
       isDragStart = true;
       prevPageX = e.pageX || e.touches[0].pageX;
       prevScrollLeft = carousel.scrollLeft;
     }
 
     const dragging = (e) => {
-      // desplazamiento de imágenes/carrusel a la izquierda según el puntero del ratón
       if (!isDragStart) return;
       e.preventDefault();
       isDragging = true;
@@ -153,12 +145,18 @@ class ProductComponent extends HTMLElement {
     });
 
 
-
     //aqui va cos0o de galeria
-    function myFunction(smallImg){
-      var fullImg = this.shadowRoot.getElementById("imageBox");
-      fullImg.src = smallImg.src;
-    }
+    const smallImages = this.shadowRoot.querySelectorAll(".small-img");
+
+    smallImages.forEach((smallImg) => {
+      smallImg.addEventListener("click", () => {
+        const fullImg = this.shadowRoot.querySelector("#imageBox");
+        fullImg.src = smallImg.src;
+        console.log('Selecciono imagen');
+      });
+    });
+      
+    
   }
 
   attributeChangeCallback(propName, oldValue, newValue) {
@@ -201,11 +199,11 @@ class ProductComponent extends HTMLElement {
       <div class="product-gallery">
         <div class="product-small-img">
 
-          <img src="${this.url_1}" onclick="myFunction(this)">
-          <img src="${this.url_2}" onclick="myFunction(this)">
-          <img src="${this.url_3}" onclick="myFunction(this)">
-          <img src="${this.url_4}" onclick="myFunction(this)">
-          <img src="${this.url_5}" onclick="myFunction(this)">
+          <img src="${this.url_1}" class="small-img">
+          <img src="${this.url_2}" class="small-img">
+          <img src="${this.url_3}" class="small-img">
+          <img src="${this.url_4}" class="small-img">
+          <img src="${this.url_5}" class="small-img">
 
         </div> 
 
