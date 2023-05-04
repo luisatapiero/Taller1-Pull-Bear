@@ -154,27 +154,13 @@ class ProductComponent extends HTMLElement {
 
 
 
-    const imgs = this.shadowRoot.querySelectorAll('.img-select a');
-  const imgBtns = [...imgs];
-  let imgId = 1;
-
-  imgBtns.forEach((imgItem) => {
-    imgItem.addEventListener('click', (event) => {
-      event.preventDefault();
-      imgId = imgItem.dataset.id;
-      slideImage.call(this); // Pasar el `this` del componente a la función
-    });
-  });
-
-  const slideImage = () => { // Usar una función flecha para tener acceso al `this` del componente
-    const displayWidth = this.shadowRoot.querySelector('.img-showcase img:first-child').clientWidth;
-    this.shadowRoot.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+    //aqui va cos0o de galeria
+    function myFunction(smallImg){
+      var fullImg = this.shadowRoot.getElementById("imageBox");
+      fullImg.src = smallImg.src;
+    }
   }
 
-  window.addEventListener('resize', slideImage);
-
-
-  }
   attributeChangeCallback(propName, oldValue, newValue) {
     this[propName] = newValue;
     this.render();
@@ -212,43 +198,21 @@ class ProductComponent extends HTMLElement {
 
         <main>
             
+      <div class="product-gallery">
+        <div class="product-small-img">
 
-        <div class = "card-wrapper">
-  <div class = "card-principal">
-    <!-- card left -->
-    <div class = "product-imgs">
-      <div class = "img-display">
+          <img src="${this.url_1}" onclick="myFunction(this)">
+          <img src="${this.url_2}" onclick="myFunction(this)">
+          <img src="${this.url_3}" onclick="myFunction(this)">
+          <img src="${this.url_4}" onclick="myFunction(this)">
+          <img src="${this.url_5}" onclick="myFunction(this)">
 
-        <div class = "img-showcase">
-          <img src = "${this.url_1}" alt = "">
-        </div>
-        
+        </div> 
 
-        
-      </div>
-      <div class = "img-select">
-        <div class = "img-item">
-          <a href = "#" data-id = "1">
-            <img src = "${this.url_2}" alt = "">
-          </a>
-        </div>
-        <div class = "img-item">
-          <a href = "#" data-id = "2">
-            <img src = "${this.url_3}" alt = "">
-          </a>
-        </div>
-        <div class = "img-item">
-          <a href = "#" data-id = "3">
-            <img src = "${this.url_4}" alt = "">
-          </a>
-        </div>
-        <div class = "img-item">
-          <a href = "#" data-id = "4">
-            <img src = "${this.url_5}" alt = "">
-          </a>
+        <div class="img-container">
+          <img id="imageBox" src="${this.url_1}">
         </div>
       </div>
-    </div>
 
         <div class="container-info-product">
             <div class="container-price">
@@ -461,10 +425,10 @@ class ProductComponent extends HTMLElement {
 
         `;
 
-    
 
 
-}
+
+  }
 
 
   set url(val) {
