@@ -85,37 +85,37 @@ class firstComponent extends HTMLElement {
                         <button class="color-filter" data-value="Black" style="--bg-color: #333333;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="Grey" style="--bg-color: #D3D3D3;"></button>
+                        <button class="color-filter" data-value="Red" style="--bg-color: #7F0104;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="Ecru" style="--bg-color: #383E42;"></button>
+                        <button class="color-filter" data-value="Ecru" style="--bg-color: #ECE7CC;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="Khaki" style="--bg-color: #614051;"></button>
+                        <button class="color-filter" data-value="Brown" style="--bg-color: #50210F;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="Faded Black" style="--bg-color: #4F3D3D;"></button>
+                        <button class="color-filter" data-value="Blue" style="--bg-color: #02446B;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="Greenish" style="--bg-color: #39402D;"></button>
+                        <button class="color-filter" data-value="Greenish" style="--bg-color: #263926;"></button>
                     </li>
                     <li>
                         <button class="color-filter" data-value="White" style="--bg-color: #ECEAEA;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="Beige" style="--bg-color: #F5EEC5;"></button>
+                        <button class="color-filter" data-value="Beige" style="--bg-color: #D6C6B3;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="Blue" style="--bg-color: #213247;"></button>
+                        <button class="color-filter" data-value="Dark blue" style="--bg-color: #021C3B;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="Medium Blue" style="--bg-color: #304363;"></button>
+                        <button class="color-filter" data-value="Pink" style="--bg-color: #ECB4DC;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="Brown" style="--bg-color: #582C01;"></button>
+                        <button class="color-filter" data-value="Grey" style="--bg-color: #4E4C49;"></button>
                     </li> 
                     <li>
-                        <button class="color-filter" data-value="Brown" style="--bg-color: #582C01;"></button>
+                        <button class="color-filter" data-value="Lilac" style="--bg-color: #C59EC9;"></button>
                     </li> 
                 </ul>
             </div>
