@@ -22,18 +22,18 @@ class firstComponent extends HTMLElement {
         <h3 class="title-text">Top Products</h3>
         </div>
         <div class="filter-div">
-            <button class="filter">Filtros</button>
+            <button class="filter">Filters</button>
         </div>
         <div class="container">
             <aside class="filters hidden">
             <div class="menu">
-            <h3 class="heading">Precio</h3>
+            <h3 class="heading">Price</h3>
             <div class = "price-div">
-                <button class="menu-item menu-item-button" id="price-asc">Precio ascendente</button>
-                <button class="menu-item menu-item-button menu-item-button-margin" id="price-desc">Precio descendente</button>
+                <button class="menu-item menu-item-button" id="price-asc">Ascending price</button>
+                <button class="menu-item menu-item-button menu-item-button-margin" id="price-desc">Declining price</button>
                 </div>
 
-                <h3 class="heading">Rango de Precios</h3>
+                <h3 class="heading">Price Range</h3>
                 <div class = "price-div">
                 <button data-min="10" data-max="40" class="filter-by-price menu-item menu-item-button">10-40</button>
                 <button data-min="40" data-max="70" class="filter-by-price menu-item menu-item-button menu-item-button-margin">40-70</button>
@@ -52,6 +52,10 @@ class firstComponent extends HTMLElement {
                 <div class="menu-inner">
                 <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-t-shirt">
                 <label class="menu-item" for="filter-T-shirt">T-shirt</label>
+                </div>
+                <div class="menu-inner">
+                <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-dress">
+                <label class="menu-item" for="filter-Dress">Dress</label>
                 </div>
                 <div class="menu-inner">
                 <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-skirt">
@@ -84,10 +88,10 @@ class firstComponent extends HTMLElement {
                         <button class="color-filter" data-value="Grey" style="--bg-color: #D3D3D3;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="Anthracite gray" style="--bg-color: #383E42;"></button>
+                        <button class="color-filter" data-value="Ecru" style="--bg-color: #383E42;"></button>
                     </li>
                     <li>
-                        <button class="color-filter" data-value="Eggplant" style="--bg-color: #614051;"></button>
+                        <button class="color-filter" data-value="Khaki" style="--bg-color: #614051;"></button>
                     </li>
                     <li>
                         <button class="color-filter" data-value="Faded Black" style="--bg-color: #4F3D3D;"></button>
@@ -118,18 +122,18 @@ class firstComponent extends HTMLElement {
 
 <h3 class="heading">Gender</h3>
             <div class="menu-inner">
-            <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-pants">
-            <label class="menu-item" for="filter-pants">Women</label>
+            <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-women">
+            <label class="menu-item" for="filter-women">Women</label>
             </div>
 
             <div class="menu-inner">
-            <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-pants">
-            <label class="menu-item" for="filter-pants">Men</label>
+            <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-men">
+            <label class="menu-item" for="filter-men">Men</label>
             </div>
 
             <div class="menu-inner">
-            <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-pants">
-            <label class="menu-item" for="filter-pants">Unisex</label>
+            <input class="menu-item menu-item-checkbox" type="checkbox" id="filter-unisex">
+            <label class="menu-item" for="filter-unisex">Unisex</label>
             </div>
 
             <app-slider></app-slider>
@@ -159,12 +163,13 @@ class firstComponent extends HTMLElement {
         let skirtFilter = this.shadowRoot.getElementById("filter-skirt");
         let tshirtFilter = this.shadowRoot.getElementById("filter-t-shirt");
         let botoncolor = this.shadowRoot.querySelectorAll(".color-filter");
-        let shirtFilter = this.shadowRoot.querySelectorAll(".filter-shirt");
-        let shortsFilter = this.shadowRoot.querySelectorAll(".filter-shorts");
-        let jacketFilter = this.shadowRoot.querySelectorAll(".filter-jacket");
-        let womanFilter = this.shadowRoot.querySelectorAll(".filter-woman");
-        let menFilter = this.shadowRoot.querySelectorAll(".filter-men");
-        let unisexFilter = this.shadowRoot.querySelectorAll(".filter-unisex");
+        let shirtFilter = this.shadowRoot.getElementById("filter-shirt");
+        let dressFilter = this.shadowRoot.getElementById("filter-dress");
+        let shortsFilter = this.shadowRoot.getElementById("filter-shorts");
+        let jacketFilter = this.shadowRoot.getElementById("filter-jacket");
+        let womanFilter = this.shadowRoot.getElementById("filter-women");
+        let menFilter = this.shadowRoot.getElementById("filter-men");
+        let unisexFilter = this.shadowRoot.getElementById("filter-unisex");
 
         priceRangeBtns.forEach(btn => btn.addEventListener('click', (e) => {
             const min = parseInt(e.target.dataset.min);
@@ -246,8 +251,18 @@ class firstComponent extends HTMLElement {
             this.render();
         });
 
+        dressFilter.addEventListener('click', (e) => {
+            if (e.target.checked)
+                this.filters = {
+                    ...this.filters,
+                    category: "Dress"
+                };
+            else delete this.filters.category;
+            this.render();
+        });
 
-        /*jacketFilter.addEventListener('click', (e) => {
+
+        jacketFilter.addEventListener('click', (e) => {
             if (e.target.checked)
                 this.filters = {
                     ...this.filters,
@@ -307,7 +322,7 @@ class firstComponent extends HTMLElement {
                 };
             else delete this.filters.gender;
             this.render();
-        });*/
+        });
 
 
         filterBtn.addEventListener('click', () => {

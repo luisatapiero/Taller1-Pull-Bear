@@ -45,7 +45,7 @@ class CardComponent extends HTMLElement {
                     <h3 class="title">${this.name}</h3>
                     <p class="price">$${this.price}</p>
                 </div>
-                <a href=${url}><button class="buy-btn">VIEW DETAILS</button></a> 
+                <a href=${url} class="buy-btn-link"><button class="buy-btn">VIEW DETAILS</button></a> 
             </div>
 
             <button class="like-btn">

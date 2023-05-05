@@ -74,9 +74,12 @@
    align-items: flex-start;
 }
 
+.buy-btn-link {
+   margin-top: auto;
+}
+
 .buy-btn {
    display: block;
-   margin-top: auto;
    margin-left: auto;
    border: 3px solid rgb(14, 14, 14);
    border-radius: 10px;
