@@ -23,8 +23,9 @@ class ProductComponent extends HTMLElement {
     })
   }
   connectedCallback() {
-    this.render();
+    
 
+    this.render();
 
     const carousel = this.shadowRoot.querySelector(".carousel"),
       firstImg = carousel.querySelectorAll("img")[0],
@@ -48,10 +49,10 @@ class ProductComponent extends HTMLElement {
           let firstImgWidth = firstImg.clientWidth + cardMargin;
 
           carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
-          setTimeout(() => showHideIcons(), 100); 
+          setTimeout(() => showHideIcons(), 100);
         } else {
 
-          let firstImgWidth = firstImg.clientWidth + 1400; 
+          let firstImgWidth = firstImg.clientWidth + 1400;
           carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
           setTimeout(() => showHideIcons(), 60);
         }
@@ -61,11 +62,11 @@ class ProductComponent extends HTMLElement {
     const autoSlide = () => {
       if (carousel.scrollLeft - (carousel.scrollWidth - carousel.clientWidth) > -1 || carousel.scrollLeft <= 0) return;
 
-      positionDiff = Math.abs(positionDiff); 
+      positionDiff = Math.abs(positionDiff);
       let firstImgWidth = firstImg.clientWidth + 14;
       let valDifference = firstImgWidth - positionDiff;
 
-      if (carousel.scrollLeft > prevScrollLeft) { 
+      if (carousel.scrollLeft > prevScrollLeft) {
         return carousel.scrollLeft += positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
       }
       carousel.scrollLeft -= positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
@@ -152,11 +153,33 @@ class ProductComponent extends HTMLElement {
       smallImg.addEventListener("click", () => {
         const fullImg = this.shadowRoot.querySelector("#imageBox");
         fullImg.src = smallImg.src;
-        console.log('Selecciono imagen');
+        
       });
     });
-      
+
+    // Seleccionar todos los elementos que deben activar el pop-up
+    const popupTriggers = this.shadowRoot.querySelectorAll('.popup-trigger');
+    const popup = this.shadowRoot.querySelector('#image-popup');
+    const popupImage = this.shadowRoot.querySelector('.popup-image');
+    const popupOverlay = this.shadowRoot.querySelector('.popup-overlay');
     
+    // Agregar un event listener a cada elemento
+    popupTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        popupImage.src = trigger.src;
+        popupImage.alt = trigger.alt;
+        popup.style.display = 'flex';
+        console.log('zoom');
+      });
+    });
+    
+    popupOverlay.addEventListener('click', () => {
+      popup.style.display = 'none';
+      console.log('fuera');
+    });
+    
+    
+
   }
 
   attributeChangeCallback(propName, oldValue, newValue) {
@@ -168,8 +191,14 @@ class ProductComponent extends HTMLElement {
   render() {
     this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="./components/productComponent/productComponent.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.4/medium-zoom.min.js" integrity="sha512-KD0T3SfLsu1QI2104iT7ap49A2Q14/xO9ceebMxO7t3I+WvlEDO9MyJkux0KmijT2JBX5LSvWQPaqPUIp2JTTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+        
+        <link 
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+  rel="stylesheet"  type='text/css'>
+
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" /> -->
         <!-- <div class="card">
             <div class="img-container"> 
                 <img src="${this.url}" class="image">
@@ -207,8 +236,14 @@ class ProductComponent extends HTMLElement {
         </div> 
 
         <div class="img-container">
-          <img id="imageBox" src="${this.url_1}">
+          <img id="imageBox" class="popup-trigger" src="${this.url_1}">
         </div>
+
+      <div id="image-popup" class="popup">
+        <div class="popup-overlay"></div>
+        <img src="${this.url_1}" alt="" class="popup-image">
+      </div>
+
       </div>
 
         <div class="container-info-product">
@@ -335,7 +370,7 @@ class ProductComponent extends HTMLElement {
         <section id="carrusel">
 
     <div class="wrapper">
-      <i id="left" class="fa-solid fa-angle-left"></i>
+      <i id="left" class="fa-regular fa-angle-left"></i>
       <div class="carousel">
 
         <a target="_blank" href="./Thirdpage.html?id=VARSITY-FLEECE-SWEATPANTS">
@@ -409,7 +444,7 @@ class ProductComponent extends HTMLElement {
         </a>
         
       </div>
-      <i id="right" class="fa-solid fa-angle-right"></i>
+      <i id="right" class="fa-regular fa-angle-right"></i>
     </div>
 
     <a href="Secondpage.html">Discover more</a>
