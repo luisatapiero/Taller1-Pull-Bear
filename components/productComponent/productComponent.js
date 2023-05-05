@@ -191,14 +191,10 @@ class ProductComponent extends HTMLElement {
   render() {
     this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="./components/productComponent/productComponent.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.4/medium-zoom.min.js" integrity="sha512-KD0T3SfLsu1QI2104iT7ap49A2Q14/xO9ceebMxO7t3I+WvlEDO9MyJkux0KmijT2JBX5LSvWQPaqPUIp2JTTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         
-        <link 
-  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
-  rel="stylesheet"  type='text/css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" /> -->
         <!-- <div class="card">
             <div class="img-container"> 
                 <img src="${this.url}" class="image">

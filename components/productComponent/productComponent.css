@@ -74,9 +74,9 @@ img {
   */
 
   main {
-    padding: 0 70px;
+    padding: 0 85px;
     display: flex;
-    gap: 30px;
+    gap: 100px;
     align-items: center; /* centrar verticalmente los elementos */
   }
   
@@ -642,7 +642,7 @@ svg {
   }
 
   .img-container img {
-    height: 429px;
+    height: 368px;
     width: fit-content;
 }
   .product-small-img {
@@ -652,7 +652,7 @@ svg {
 
   .product-small-img img {
     margin: 7.5px 0px;
-    height: 102px;
+    height: 89px;
     width: max-content;
 }
   
