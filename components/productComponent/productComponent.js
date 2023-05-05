@@ -370,11 +370,11 @@ class ProductComponent extends HTMLElement {
         <section id="carrusel">
 
     <div class="wrapper">
-      <i id="left" class="fa-regular fa-angle-left"></i>
+      <i id="left" class="fa-solid fa-angle-left"></i>
       <div class="carousel">
 
-        <a target="_blank" href="./Thirdpage.html?id=VARSITY-FLEECE-SWEATPANTS">
-          <img src="R-viewed/1.jpg" alt="img" draggable="false" />
+        <a target="_blank" href="./Thirdpage.html?id=BLUE-OVERSIZE-HOODIE">
+          <img src="https://static.pullandbear.net/2/photos//2023/V/0/1/p/3593/302/434/3593302434_2_1_8.jpg?t=1678986867688&imwidth=563" alt="img" draggable="false" />
           <div class="overlay">
             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -389,7 +389,7 @@ class ProductComponent extends HTMLElement {
 
         </a>
 
-        <a target="_blank" href="./Thirdpage.html?id=VARSITY-FLEECE-SWEATPANTS">
+        <a target="_blank" href="./Thirdpage.html?id=ASYMMETRIC-SLEEVELESS-TOP">
           <img src="R-viewed/2.jpg" alt="img" draggable="false" />
           <div class="overlay">
             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -403,7 +403,7 @@ class ProductComponent extends HTMLElement {
           </div>
         </a>
 
-        <a target="_blank" href="./Thirdpage.html?id=STRAIGHT-FIT-DENIM-DUNGAREES">
+        <a target="_blank" href="./Thirdpage.html?id=VARSITY-BOMBER-JACKET">
           <img src="R-viewed/3.jpg" alt="img" draggable="false" />
           <div class="overlay">
             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -416,7 +416,7 @@ class ProductComponent extends HTMLElement {
             </svg>
           </div>
         </a>
-        <a target="_blank" href="./Thirdpage.html?id=WIDE-LEG-TROUSERS">
+        <a target="_blank" href="./Thirdpage.html?id=HOODIE-WITH-SLOGAN">
           <img src="R-viewed/4.jpg" alt="img" draggable="false" />
           <div class="overlay">
             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -429,7 +429,7 @@ class ProductComponent extends HTMLElement {
             </svg>
           </div>
         </a>
-        <a target="_blank" href="./Thirdpage.html?id=HOODIE-WITH-BUTTERFLY--PRINT"">
+        <a target="_blank" href="./Thirdpage.html?id=HIGH-WAIST-MOM-FIT-SLIM-JEANS">
           <img src="R-viewed/5.jpg" alt="img" draggable="false" />
           <div class="overlay">
             <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -444,7 +444,7 @@ class ProductComponent extends HTMLElement {
         </a>
         
       </div>
-      <i id="right" class="fa-regular fa-angle-right"></i>
+      <i id="right" class="fa-solid fa-angle-right"></i>
     </div>
 
     <a href="Secondpage.html">Discover more</a>
