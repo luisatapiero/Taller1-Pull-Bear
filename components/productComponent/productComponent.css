@@ -134,7 +134,15 @@ img {
     height: auto; /* Hacer que la imagen sea más pequeña */
     max-width: 100%; /* Hacer que el ancho de la imagen sea el máximo disponible */
   }
-  
+
+  .product-small-img {
+    width: 100%;
+  }
+
+  .product-small-img img {
+    margin: 7.5px 0;
+}
+
   .card-wrapper {
     margin: 0 8%;
     width: 100%;

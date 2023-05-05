@@ -203,7 +203,6 @@ class ProductComponent extends HTMLElement {
           <img src="${this.url_2}" class="small-img">
           <img src="${this.url_3}" class="small-img">
           <img src="${this.url_4}" class="small-img">
-          <img src="${this.url_5}" class="small-img">
 
         </div> 
 
